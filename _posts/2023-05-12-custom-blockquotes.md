@@ -75,6 +75,7 @@ We decided to support the same custom blockquotes as in [jekyll-gitbook](https:/
 A regular blockquote can be used as following:
 
 ```markdown
+
 > This is a regular blockquote
 > and it can be used as usual
 ```
