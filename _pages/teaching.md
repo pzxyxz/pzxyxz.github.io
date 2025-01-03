@@ -2,27 +2,187 @@
 layout: page
 permalink: /academics/
 title: academics
-description: coursework.
+description: 
 nav: true
 nav_order: 6
 ---
-*present classes*
-# Mechanical Engineering
-<span class="color: yellow;"><strong>440:127 Introduction to Computers for Engineers</strong></span> taught by *Dr. Philip Brown*  
-<span class="color: green;"><strong>440:221 Engineering Mechanics: Statics</strong></span> taught by *Dr. Jennifer Lynch-Branzoi*  
-<span class="color: green;"><strong>440:222 Engineering Mechanics: Dynamics</strong></span> taught by *Dr. Annalisa Scacchioli*  
-<span class="pastel-green"><strong>650:291 Mechanics of Materials</strong></span> taught by *Dr. Aaron Mazzeo*  
-<span class="pastel-blue"><strong>540:343 Engineering Economics</strong></span> taught by *Dr. Elin Wicks*  
-<span class="pastel-blue"><strong>650:388 CAD in MAE</strong></span> taught by *Hongxiang Cao*  
-<span class="pastel-blue current-course"><strong>650:351 *Thermodynamics* </strong></span> taught by *Dr. Hao Lin*  
-<span class="pastel-blue current-course"><strong>650:361 *Introduction to Mechatronics* </strong></span> taught by *Dr. Jingang Yi*  
-<span class="pastel-pink current-course"><strong>635:407 *Mechanical Properties of Materials* </strong></span> taught by *Dr. Thomas Tsakalakos*  
+<hr>
 
-# Mathematics
+<p><em>* indicates present coursework</em></p>
 
-<span class="pastel-green"><strong>640:251 Multivariable Calculus</strong></span> taught by *Dr. Maxime Van de Moortel*  
-<span class="pastel-green"><strong>640:244 Differential Equations for Engineers</strong></span> taught by *Dr. Zehui Zhou*  
-<span class="pastel-green"><strong>640:250 Introductory Linear Algebra</strong></span> taught by *Dr. Priyadip Mondal*  
-<span class="pastel-blue"><strong>640:300 Introduction to Mathematical Reasoning</strong></span> taught by *Dr. Tiep Pham*  
-<span class="pastel-blue current-course"><strong>640:350 *Linear Algebra* </strong></span> taught by *Dr. Janos Komlos*  
-<span class="pastel-pink"><strong>640:421 Advanced Calculus for Engineering</strong></span> taught by *Dr. Natasa Sesum*  
+<h3>Mechanical Engineering</h3>
+<table>
+<tbody>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: pink;">440:127&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: pink;">Introduction to Computers for Engineers</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Philip Brown</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">440:221&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">Engineering Mechanics: Statics</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Jennifer Lynch-Branzoi</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">440:222&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">Engineering Mechanics: Dynamics</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Annalisa Scacchioli</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">650:291&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">Mechanics of Materials</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Aaron Mazzeo</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">540:343&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">Engineering Economics</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Elin Wicks</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">650:388&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">CAD in MAE</span> <span style="font-size: 10pt; font-style: italic;">taught by Hongxiang Cao</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">*650:351&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">Thermodynamics</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Hao Lin</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">*650:361&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">Introduction to Mechatronics</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Jingang Yi</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: red;">*635:407&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: red;">Mechanical Properties of Materials</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Thomas Tsakalakos</span>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<h3>Mathematics</h3>
+<table>
+<tbody>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">640:251&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">Multivariable Calculus</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Maxime Van de Moortel</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">640:244&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">Differential Equations for Engineers</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Zehui Zhou</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">640:250&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: green;">Introductory Linear Algebra</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Priyadip Mondal</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">640:300&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">Introduction to Mathematical Reasoning</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Tiep Pham</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">*640:350&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: blue;">Linear Algebra</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Janos Komlos</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <br>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: red;">640:421&nbsp;&nbsp;</span>
+    </td>
+    <td>
+        <span style="font-weight: bold; color: red;">Advanced Calculus for Engineering</span> <span style="font-size: 10pt; font-style: italic;">taught by Dr. Natasa Sesum</span>
+    </td>
+</tr>
+</tbody>
+</table>

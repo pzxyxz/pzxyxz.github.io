@@ -1,4 +1,4 @@
-// Has to be in the headcdfdfddddddd tag, otherwise a flicker effect will occur.
+// Has to be in the head tag, otherwise a flicker effect will occur.
 
 // Toggle through light, dark, and system theme settings.
 let toggleThemeSetting = () => {
@@ -221,7 +221,7 @@ let determineComputedTheme = () => {
   let themeSetting = determineThemeSetting();
   if (themeSetting == "system") {
     const userPref = window.matchMedia;
-  if (userPref && (userPref('(prefers-color-scheme: dark)').matches || userPref('(max-width: 768px)').matches || true)) {
+    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
       return "dark";
     } else {
       return "light";

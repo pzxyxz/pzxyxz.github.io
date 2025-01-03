@@ -1,5 +1,12 @@
-.level-100 { color: #FFFF99; }
-.level-200 { color: #B2FFB2; }
-.level-300 { color: #B2D0FF; }
-.level-400 { color: #FFB2FF; }
-.current-course { font-weight: bold; }
+.pastel-green {
+    color: #77dd77; /* Replace with your preferred pastel green hex code */
+}
+.pastel-blue {
+    color: #aec6cf; /* Replace with your preferred pastel blue hex code */
+}
+.pastel-pink {
+    color: #ffb7c5; /* Replace with your preferred pastel pink hex code */
+}
+.current-course {
+    font-style: italic; /* Example of additional styling for current courses */
+}
