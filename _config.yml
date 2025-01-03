@@ -10,7 +10,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Preisha
 middle_name:
 last_name: Mishra
-email: preisha.mishra@rutgers.edu
+contact_note: preisha.mishra@rutgers.edu >
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
 Preisha's Portfolio
 footer_text: >
