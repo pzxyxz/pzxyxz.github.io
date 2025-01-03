@@ -1,22 +1,18 @@
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
-markdown: kramdown
-kramdown:
-  input: GFM
-  hard_wrap: false
-
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Preisha
 middle_name:
 last_name: Mishra
-contact_note: preisha.mishra@rutgers.edu >
+contact_note: >
+  preisha.mishra@rutgers.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-Preisha's Portfolio
-footer_text: #footer test
+  preisha's portfolio
+footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 🦩    # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: 🐦‍🔥   # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://pzxyxz.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -30,7 +26,7 @@ back_to_top: true # set to false to disable the back to top button
 
 # repo color theme
 repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_theme_dark: light # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
   enabled: true
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
@@ -51,6 +47,8 @@ rss_icon: false
 navbar_fixed: true
 footer_fixed: false
 search_enabled: true
+socials_in_search: true
+bib_search: true
 
 # Dimensions
 max_width: 900px
@@ -64,7 +62,7 @@ max_width: 900px
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Include Schema.org in the HTML head
-og_image: https://pzxyxz.github.io/assets\img\prof_pic.jpg# The site-wide (default for all links) Open Graph preview image
+og_image: https://pzxyxz.github.io/assets/img/prof_pic.jpg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -273,8 +271,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Mishra]
+  first_name: [Preisha]
 
   style: apa
   locale: en
@@ -385,7 +383,7 @@ lazy_loading_images: true # enables lazy loading of images (recommended)
 # Optional Features
 # -----------------------------------------------------------------------------
 
-enable_google_analytics: false # enables google analytics
+enable_google_analytics: true # enables google analytics
 enable_cronitor_analytics: false # enables cronitor RUM analytics
 enable_pirsch_analytics: false # enables Pirsch analytics (https://pirsch.io/)
 enable_openpanel_analytics: false # enables Openpanel analytics (https://openpanel.dev/)
@@ -395,7 +393,7 @@ enable_masonry: true # enables automatic project cards arrangement
 enable_math: true # enables math typesetting (uses MathJax)
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts
 enable_darkmode: true # enables switching between light/dark modes
-enable_navbar_social: false # enables displaying social links in the navbar on the about page
+enable_navbar_social: true # enables displaying social links in the navbar on the about page
 enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
 enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
