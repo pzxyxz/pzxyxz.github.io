@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Rutgers - NB SOE '27 </a>
+subtitle: <a href='#'>Rutgers-NB SOE '27 ⚔️ </a>
 
 profile:
   align: right
@@ -22,4 +22,27 @@ _styles: >
     }
 ---
 
-Hi! I'm Preisha Mishra. I study Mechanical Engineering and Math at Rutgers and this is my portfolio  :).
+
+
+<style>
+   .highlight {
+    position: relative;
+    display: inline-block;
+  }
+
+  .highlight::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background:rgb(218, 235, 255); /* Light yellow highlight */
+    border-radius: 4px;
+    z-index: -1;
+  }
+</style>
+
+<p>
+  Hi, I’m Preisha —a <span class="highlight">Mechanical Engineering and Math</span> student at Rutgers. Welcome to my portfolio!
+</p>

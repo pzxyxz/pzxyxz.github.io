@@ -123,9 +123,8 @@ horizontal: false
             <source src="/assets/video/engine.mp4" type="video/mp4">
           </video>
         </div>
-        <article>s
+        <article>
           <h1>engine</h1>
-          <p>Detailed animations of engine assembly.</p>
           <span>SolidWorks</span>
         </article>
       </a>
@@ -134,7 +133,7 @@ horizontal: false
       <a class="card">
         <div class="thumb">
           <video autoplay muted loop>
-            <source src="/assets/video/ornithopter.mp4" type="video/mp4">
+            <source src="/projects_for_portfolio\ornithopter.mp4" type="video/mp4">
           </video>
         </div>
         <article>
@@ -162,10 +161,10 @@ horizontal: false
       <a href="/assets/images/robotic_jaw.png" class="card">
         <div class="thumb" style="background-image: url(/assets/images/robotic_jaw.png);"></div>
         <article>
-          <h1>Robotic Jaw Gripper</h1>
-          <p>Detailed engineering drawings and animations.</p>
+          <h1>6-Jaw Gripper</h1>
+          <p>Robotics Gripper Mechanism</p>
           <span>SolidWorks</span>
-        </article>
+        </article> 
       </a>
     </div>
     <div class="item-6">
@@ -173,7 +172,6 @@ horizontal: false
         <div class="thumb" style="background-image: url(/assets/images/chuck.png);"></div>
         <article>
           <h1>Chuck</h1>
-          <p>Machining project details.</p>
           <span>Lathe</span>
         </article>
       </a>
@@ -183,11 +181,10 @@ horizontal: false
         <div class="thumb" style="background-image: url(/assets/images/vise.png);"></div>
         <article>
           <h1>Vise</h1>
-          <p>Machining project details.</p>
           <span>Vertical Mill</span>
         </article>
       </a>
     </div>
   </div>
 </body>
-</html>
+
