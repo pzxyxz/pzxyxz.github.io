@@ -46,11 +46,12 @@ horizontal: false
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  height: 100%;
   position: relative;
   top: 0;
   transition: all 0.1s ease-in;
-  border-radius: 8px; /* Optional: adds rounded corners */
+  border-radius: 12px; /* Optional: adds rounded corners */
+  justify-content: space-between; 
 }
 
 .card:hover {
@@ -65,7 +66,7 @@ horizontal: false
   }
 .card h1 {
   font-size: 20px;
-  margin: 0 0 10px 0;
+  margin: 10px 0 0px 0;
   color: #f5f5f5; /* Light color for header */
   font-style: italic; /* Italicize header */
 }
@@ -83,7 +84,7 @@ horizontal: false
   color: #999;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin: 2em 0 0 0;
+  margin-top: auto; /* Push span to the bottom */
 }
 
 .thumb {
@@ -101,11 +102,11 @@ horizontal: false
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
 }
+
 </style>
 <body>
-  <div class="band">
+   <div class="band">
     <div class="item-1">
       <a class="card">
         <div class="thumb" style="background-image: url('/assets/img/humatvalve.png');"></div>
@@ -133,7 +134,7 @@ horizontal: false
       <a class="card">
         <div class="thumb">
           <video autoplay muted loop>
-            <source src="/projects_for_portfolio\ornithopter.mp4" type="video/mp4">
+            <source src="/projects_for_portfolio/ornithopter.mp4" type="video/mp4">
           </video>
         </div>
         <article>
@@ -161,8 +162,8 @@ horizontal: false
       <a href="/assets/images/robotic_jaw.png" class="card">
         <div class="thumb" style="background-image: url(/assets/images/robotic_jaw.png);"></div>
         <article>
-          <h1>6-Jaw Gripper</h1>
-          <p>Robotics Gripper Mechanism</p>
+          <h1>6-jaw gripper</h1>
+          <p>robotics gripper mechanism</p>
           <span>SolidWorks</span>
         </article> 
       </a>
@@ -171,7 +172,7 @@ horizontal: false
       <a href="/assets/images/chuck.png" class="card">
         <div class="thumb" style="background-image: url(/assets/images/chuck.png);"></div>
         <article>
-          <h1>Chuck</h1>
+          <h1>chuck</h1>
           <span>Lathe</span>
         </article>
       </a>
@@ -180,7 +181,7 @@ horizontal: false
       <a href="/assets/images/vise.png" class="card">
         <div class="thumb" style="background-image: url(/assets/images/vise.png);"></div>
         <article>
-          <h1>Vise</h1>
+          <h1>vise</h1>
           <span>Vertical Mill</span>
         </article>
       </a>
