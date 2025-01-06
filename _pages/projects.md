@@ -8,27 +8,186 @@ nav_order: 3
 display_categories: [work, fun]
 horizontal: false
 ---
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  html {
+    background: rgb(48, 57, 61);
+    font-family: system-ui;
+    -webkit-font-smoothing: antialiased;
+    padding: 20px 0;
+  }
+  header {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .band {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+  @media (min-width: 30em) {
+    .band {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 60em) {
+    .band {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+.card {
+  background: #2c2c2c; /* Dark background for cards */
+  text-decoration: none;
+  color: #ddd; /* Light text color for dark theme */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+  top: 0;
+  transition: all 0.1s ease-in;
+  border-radius: 8px; /* Optional: adds rounded corners */
+}
 
-<hr>
+.card:hover {
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.8); /* Stronger shadow on hover */
+}
+.card article {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+.card h1 {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  color: #f5f5f5; /* Light color for header */
+  font-style: italic; /* Italicize header */
+}
 
-<div class="projects">
-<h3>SolidWorks<h3>
-<h4>Ball Valve</h4>
-<ul>
-  <li><strong><a href="/assets/pdf/Assembly_Drawing.PDF">Assembly Drawing</a></strong></li>
-  <li><strong><a href="/assets/pdf/Body_Drawing.pdf">Body Drawing</a></strong></li>
-  <li><strong><a href="/assets/video/assembly_animation.mp4">Animation of Assembly</a></strong></li>
-</ul>
+.card p {
+  flex: 1;
+  line-height: 1.4;
+  margin-top: 10px;
+  color: #ccc; /* Light gray for paragraph text */
+}
 
-<h4>Improved Humat Valve</h4>
-<ul>
-  <li><strong>Drawing</strong></li>
-  <li><strong>Animation of Assembly</strong></li>
-</ul>
+.card span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 2em 0 0 0;
+}
 
-<h3>Lab</h3>
-<p>(Include details or links here)</p>
-
-<h3>Other</h3>
-<p>(Include details or links here)</p>
+.thumb {
+  padding-bottom: 60%;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #444; /* Optional: separates thumbnail and content */
+}
+.thumb video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+</style>
+<body>
+  <div class="band">
+    <div class="item-1">
+      <a class="card">
+        <div class="thumb" style="background-image: url('/assets/img/humatvalve.png');"></div>
+        <article>
+          <h1>improved humat valve</h1>
+          <p>Storz adapters integration for each outlet to ensure efficient connections between fire hoses and other equipment in a two-way Gated Wye Valve as well as addition of bolted handle, pressure gauge, and Storz Connection Nozzle. Respective engineering drawings included.</p>
+          <span>SolidWorks Group Project</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-2">
+      <a class="card">
+        <div class="thumb">
+          <video autoplay muted loop>
+            <source src="/assets/video/engine.mp4" type="video/mp4">
+          </video>
+        </div>
+        <article>s
+          <h1>engine</h1>
+          <p>Detailed animations of engine assembly.</p>
+          <span>SolidWorks</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-3">
+      <a class="card">
+        <div class="thumb">
+          <video autoplay muted loop>
+            <source src="/assets/video/ornithopter.mp4" type="video/mp4">
+          </video>
+        </div>
+        <article>
+          <h1>ornithopter</h1>
+          <p>Flapping-wing mechanism</p>
+          <span>SolidWorks</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-4">
+      <a href="/assets/pdf/ball-valve drawing combined.pdf" class="card">
+        <div class="thumb">
+          <video autoplay muted loop>
+            <source src="/assets/video/assembly_animation.mp4" type="video/mp4">
+          </video>
+        </div>
+        <article>
+          <h1>ball valve</h1>
+          <p>Body and assembly drawing.</p>
+          <span>SolidWorks</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-5">
+      <a href="/assets/images/robotic_jaw.png" class="card">
+        <div class="thumb" style="background-image: url(/assets/images/robotic_jaw.png);"></div>
+        <article>
+          <h1>Robotic Jaw Gripper</h1>
+          <p>Detailed engineering drawings and animations.</p>
+          <span>SolidWorks</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-6">
+      <a href="/assets/images/chuck.png" class="card">
+        <div class="thumb" style="background-image: url(/assets/images/chuck.png);"></div>
+        <article>
+          <h1>Chuck</h1>
+          <p>Machining project details.</p>
+          <span>Lathe</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-7">
+      <a href="/assets/images/vise.png" class="card">
+        <div class="thumb" style="background-image: url(/assets/images/vise.png);"></div>
+        <article>
+          <h1>Vise</h1>
+          <p>Machining project details.</p>
+          <span>Vertical Mill</span>
+        </article>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

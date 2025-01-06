@@ -7,7 +7,7 @@ subtitle: <a href='#'>Rutgers - NB SOE '27 </a>
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   more_info: >
     <p></p>
     <p></p>
