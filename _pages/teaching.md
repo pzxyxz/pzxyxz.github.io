@@ -6,7 +6,6 @@ description:
 nav: true
 nav_order: 6
 ---
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,12 +30,13 @@ nav_order: 6
         }
         em {
             font-style: italic;
+             font-weight: normal;
         }
     </style>
 </head>
 <body>
     <p><em>* indicates present coursework</em></p>
-    <h3 style="color:rgb(21, 29, 32); font-weight: bold;">Mechanical Engineering</h3>
+    <h3 style="font-weight: bold;">Mechanical Engineering</h3>
     <table>
         <tbody>
             <tr>
@@ -86,8 +86,7 @@ nav_order: 6
             </tr>
         </tbody>
     </table>
-
-    <h3 style="color:rgb(21, 29, 32); font-weight: bold;">Mathematics</h3>
+    <h3 style="font-weight: bold;">Mathematics</h3>
     <table>
         <tbody>
             <tr>

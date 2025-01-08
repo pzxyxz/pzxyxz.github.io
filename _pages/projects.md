@@ -9,6 +9,33 @@ display_categories: [work, fun]
 horizontal: false
 ---
 <style>
+  :root {
+  --matte-white: rgb(255, 255, 255); /* Slightly dark white */
+  --matte-black: rgb(34, 34, 34); /* Slightly black/grey for dark theme */
+
+  /* Light Theme Colors */
+  --h1-light-color: rgb(0, 0, 66); /* Black color for h1 in light theme */
+  --p-light-color:rgb(29, 29, 82); /* Slightly lighter black for p in light theme */
+
+  /* Dark Theme Colors */
+  --h1-dark-color: white; /* White color for h1 in dark theme */
+  --p-dark-color: rgb(200, 200, 200); /* Lighter white for p in dark theme */
+}
+
+/* Light theme: matte white for cards */
+html[data-theme="light"] {
+  --card-bg-color: var(--matte-white); /* Apply matte white */
+   --h1-color: var(--h1-light-color); /* Apply light theme h1 color */
+  --p-color: var(--p-light-color); /* Apply light theme p color */
+}
+
+/* Dark theme: matte black for cards */
+html[data-theme="dark"] {
+  --card-bg-color: var(--matte-black); /* Apply matte black */
+    --h1-color: var(--h1-dark-color); /* Apply dark theme h1 color */
+  --p-color: var(--p-dark-color); /* Apply dark theme p color */
+}
+
   html {
     background: rgb(48, 57, 61);
     font-family: system-ui;
@@ -40,7 +67,7 @@ horizontal: false
     }
   }
 .card {
-  background: #2c2c2c; /* Dark background for cards */
+ background: var(--card-bg-color); /* Apply theme-based background color */
   text-decoration: none;
   color: #ddd; /* Light text color for dark theme */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
@@ -67,7 +94,7 @@ horizontal: false
 .card h1 {
   font-size: 20px;
   margin: 10px 0 0px 0;
-  color: #f5f5f5; /* Light color for header */
+  color: var(--h1-color); /* Light color for header */
   font-style: italic; /* Italicize header */
 }
 
@@ -75,7 +102,7 @@ horizontal: false
   flex: 1;
   line-height: 1.4;
   margin-top: 10px;
-  color: #ccc; /* Light gray for paragraph text */
+  color: var(--p-color);/* Light gray for paragraph text */
 }
 
 .card span {
@@ -93,7 +120,6 @@ horizontal: false
   background-position: center center;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid #444; /* Optional: separates thumbnail and content */
 }
 .thumb video {
   position: absolute;

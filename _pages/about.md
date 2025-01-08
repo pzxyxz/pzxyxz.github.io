@@ -22,40 +22,40 @@ _styles: >
     }
 ---
 <style>
-  .highlight {
-    position: relative;
-    display: inline-block;
-  }
+/* Light Theme - Default */
+:root {
+  --highlight-light: rgb(215, 230, 251); /* Light blue */
+}
 
-  .highlight::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 50%;
-    border-radius: 2px;
-    z-index: -1;
-    transition: 0.3s ease; /* Smooth transition */
-  }
+/* Dark Theme */
+html[data-theme="dark"] {
+  --highlight-dark: rgb(39, 85, 120); /* Dark blue */
+}
 
-  /* Default highlight (fallback) */
-  .highlight::before {
-    background: rgb(218, 235, 255); /* Light theme default */
-  }
+/* Highlight Class */
+.highlight {
+  position: relative;
+  display: inline-block;
+}
 
-  /* Highlight for light theme */
-  body.theme_light .highlight::before {
-    background: rgb(218, 235, 255); /* Light blue for light theme */
-  }
+.highlight::before {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: var(--highlight-light); /* Default to light theme color */
+  border-radius: 2px;
+  z-index: -1;
+}
 
-  /* Highlight for dark theme */
-  body.theme_dark .highlight::before {
-    background: rgb(58, 72, 86); /* Dark blue for dark theme */
-  }
+/* Dark theme: change the background to dark blue */
+html[data-theme="dark"] .highlight::before {
+  background: var(--highlight-dark); /* Dark blue for dark theme */
+}
 </style>
 
-
 <p>
-  Hi, I’m Preisha —a <span class="highlight">Mechanical Engineering and Math</span> student at Rutgers. Welcome to my portfolio!
+  Hi, I’m Preisha —a <span class="highlight">Mechanical Engineering and Mathematics</span> student at Rutgers. I’m currently interested in the potential of cold plasma for advanced sterilization technologies, its implications in healthcare, and the transformative promise of nuclear fusion energy in addressing global energy challenges. In my free time, I enjoy building things from scratch to avoid buying them. Welcome to my portfolio!
 </p>
