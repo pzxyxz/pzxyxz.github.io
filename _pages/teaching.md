@@ -6,182 +6,121 @@ description:
 nav: true
 nav_order: 6
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Levels</title>
+    <style>
+        .level-100 {
+            color: #ADD8E6; /* Light Blue */
+            font-weight: bold;
+        }
+        .level-200 {
+            color: #87CEFA; /* Sky Blue */
+            font-weight: bold;
+        }
+        .level-300 {
+            color: #4682B4; /* Steel Blue */
+            font-weight: bold;
+        }
+        .level-400 {
+            color: rgb(67, 67, 94); /* Dark Blue */
+            font-weight: bold;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p><em>* indicates present coursework</em></p>
+    <h3 style="color:rgb(21, 29, 32); font-weight: bold;">Mechanical Engineering</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><br></td>
+                <td class="level-100">440:127&nbsp;&nbsp;</td>
+                <td class="level-100">Introduction to Computers for Engineers <em>taught by Dr. Philip Brown</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-200">440:221&nbsp;&nbsp;</td>
+                <td class="level-200">Engineering Mechanics: Statics <em>taught by Dr. Jennifer Lynch-Branzoi</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-200">440:222&nbsp;&nbsp;</td>
+                <td class="level-200">Engineering Mechanics: Dynamics <em>taught by Dr. Annalisa Scacchioli</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-200">650:291&nbsp;&nbsp;</td>
+                <td class="level-200">Mechanics of Materials <em>taught by Dr. Aaron Mazzeo</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-300">540:343&nbsp;&nbsp;</td>
+                <td class="level-300">Engineering Economics <em>taught by Dr. Elin Wicks</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-300">650:388&nbsp;&nbsp;</td>
+                <td class="level-300">CAD in MAE <em>taught by Hongxiang Cao</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-300">*650:351&nbsp;&nbsp;</td>
+                <td class="level-300">Thermodynamics <em>taught by Dr. Hao Lin</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-300">*650:361&nbsp;&nbsp;</td>
+                <td class="level-300">Introduction to Mechatronics <em>taught by Dr. Jingang Yi</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-400">*635:407&nbsp;&nbsp;</td>
+                <td class="level-400">Mechanical Properties of Materials <em>taught by Dr. Thomas Tsakalakos</em></td>
+            </tr>
+        </tbody>
+    </table>
 
-<p><em>* indicates present coursework</em></p>
-
-<h3><span style="font-weight: bold; color:rgb(21, 29, 32);">Mechanical Engineering</span></h3>
-<table>
-<tbody>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #ADD8E6;">440:127&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #ADD8E6;">Introduction to Computers for Engineers</span> <span style="font-style: italic;">taught by Dr. Philip Brown</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">440:221&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">Engineering Mechanics: Statics</span> <span style="font-style: italic;">taught by Dr. Jennifer Lynch-Branzoi</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">440:222&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">Engineering Mechanics: Dynamics</span> <span style="font-style: italic;">taught by Dr. Annalisa Scacchioli</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">650:291&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">Mechanics of Materials</span> <span style="font-style: italic;">taught by Dr. Aaron Mazzeo</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">540:343&nbsp;&nbsp;</span>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">Engineering Economics</span> <span style="font-style: italic;">taught by Dr. Elin Wicks</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">650:388&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">CAD in MAE</span> <span style="font-style: italic;">taught by Hongxiang Cao</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">*650:351&nbsp;&nbsp;</span>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">Thermodynamics</span> <span style="font-style: italic;">taught by Dr. Hao Lin</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">*650:361&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">Introduction to Mechatronics </span> <span style="font-style: italic;">taught by Dr. Jingang Yi</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-            <span style="font-weight: bold; color: rgb(18, 18, 74);">*635:407&nbsp;&nbsp;</span>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: rgb(18, 18, 74);">Mechanical Properties of Materials</span> <span style="font-style: italic;">taught by Dr. Thomas Tsakalakos</span>
-    </td>
-</tr>
-</tbody>
-</table>
-
-<h3><span style="font-weight: bold; color:rgb(21, 29, 32);">Mathematics</span></h3>
-<table>
-<tbody>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #ADD8E6;">640:251&nbsp;&nbsp;</span> 
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #ADD8E6;">Multivariable Calculus</span> <span style="font-style: italic;">taught by Dr. Maxime Van de Moortel</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">640:244&nbsp;&nbsp;</span> <!-- Light Blue for 100 level -->
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">Differential Equations for Engineers</span> <span style="font-style: italic;">taught by Dr. Zehui Zhou</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #87CEFA;">640:250&nbsp;&nbsp;</span> <!-- Light Blue for 100 level -->
-    </td>
-    <td>
-        <span style="font-weight: bold; color:#87CEFA;">Introductory Linear Algebra</span> <span style="font-style: italic;">taught by Dr. Priyadip Mondal</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">640:300&nbsp;&nbsp;</span> <!-- Medium Blue for 300 level -->
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">Introduction to Mathematical Reasoning</span> <span style="font-style: italic;">taught by Dr. Tiep Pham</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">*640:350&nbsp;&nbsp;</span> <!-- Medium Blue for 300 level -->
-    </td>
-    <td>
-        <span style="font-weight: bold; color: #4682B4;">Linear Algebra</span> <span style="font-style: italic;">taught by Dr. Janos Komlos</span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <br>
-    </td>
-    <td>
-        <span style="font-weight: bold; color: rgb(18, 18, 74);">640:421&nbsp;&nbsp;</span>
-    </td>
-    <td>
-        <span style="font-weight: bold; color:rgb(18, 18, 74);">Advanced Calculus for Engineering</span> <span style="font-style: italic;">taught by Dr. Natasa Sesum</span>
-    </td>
-</tr>
-</tbody>
-</table>
+    <h3 style="color:rgb(21, 29, 32); font-weight: bold;">Mathematics</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><br></td>
+                <td class="level-100">640:251&nbsp;&nbsp;</td>
+                <td class="level-100">Multivariable Calculus <em>taught by Dr. Maxime Van de Moortel</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-200">640:244&nbsp;&nbsp;</td>
+                <td class="level-200">Differential Equations for Engineers <em>taught by Dr. Zehui Zhou</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-200">640:250&nbsp;&nbsp;</td>
+                <td class="level-200">Introductory Linear Algebra <em>taught by Dr. Priyadip Mondal</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-300">640:300&nbsp;&nbsp;</td>
+                <td class="level-300">Introduction to Mathematical Reasoning <em>taught by Dr. Tiep Pham</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-300">*640:350&nbsp;&nbsp;</td>
+                <td class="level-300">Linear Algebra <em>taught by Dr. Janos Komlos</em></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td class="level-400">640:421&nbsp;&nbsp;</td>
+                <td class="level-400">Advanced Calculus for Engineering <em>taught by Dr. Natasa Sesum</em></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

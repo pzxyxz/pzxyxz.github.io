@@ -134,7 +134,7 @@ horizontal: false
       <a class="card">
         <div class="thumb">
           <video autoplay muted loop>
-            <source src="/projects_for_portfolio/ornithopter.mp4" type="video/mp4">
+            <source src="/assets/video/ornithopter.mp4" type="video/mp4">
           </video>
         </div>
         <article>
@@ -148,41 +148,13 @@ horizontal: false
       <a href="/assets/pdf/ball-valve drawing combined.pdf" class="card">
         <div class="thumb">
           <video autoplay muted loop>
-            <source src="/assets/video/assembly_animation.mp4" type="video/mp4">
+            <source src="/assets/video/ballvalve.mp4" type="video/mp4">
           </video>
         </div>
         <article>
           <h1>ball valve</h1>
           <p>Body and assembly drawing.</p>
           <span>SolidWorks</span>
-        </article>
-      </a>
-    </div>
-    <div class="item-5">
-      <a href="/assets/images/robotic_jaw.png" class="card">
-        <div class="thumb" style="background-image: url(/assets/images/robotic_jaw.png);"></div>
-        <article>
-          <h1>6-jaw gripper</h1>
-          <p>robotics gripper mechanism</p>
-          <span>SolidWorks</span>
-        </article> 
-      </a>
-    </div>
-    <div class="item-6">
-      <a href="/assets/images/chuck.png" class="card">
-        <div class="thumb" style="background-image: url(/assets/images/chuck.png);"></div>
-        <article>
-          <h1>chuck</h1>
-          <span>Lathe</span>
-        </article>
-      </a>
-    </div>
-    <div class="item-7">
-      <a href="/assets/images/vise.png" class="card">
-        <div class="thumb" style="background-image: url(/assets/images/vise.png);"></div>
-        <article>
-          <h1>vise</h1>
-          <span>Vertical Mill</span>
         </article>
       </a>
     </div>
