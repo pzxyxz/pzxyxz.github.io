@@ -1,13 +1,15 @@
+const path = require('path');
+
 module.exports = {
   content: [
-    "file:///C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/**/*.html",
-    "file:///C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/**/*.js"
+    "file:///" + path.resolve("C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/**/*.html").replace(/\\/g, "/"),
+    "file:///" + path.resolve("C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/**/*.js").replace(/\\/g, "/")
   ],
   css: [
-    "file:///C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/assets/css/*.css"
+    "file:///" + path.resolve("C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/assets/css/*.css").replace(/\\/g, "/")
   ],
-  output: "_site/assets/css/",
+  output: "C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/assets/css/",
   skippedContentGlobs: [
-    "file:///C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/assets/**/*.html"
+    "file:///" + path.resolve("C:/Users/preis/Desktop/portfolio/pzxyxz.github.io/_site/assets/**/*.html").replace(/\\/g, "/")
   ],
 };
