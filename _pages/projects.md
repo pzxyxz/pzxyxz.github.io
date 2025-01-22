@@ -2,21 +2,57 @@
 layout: page
 title: projects
 permalink: /projects/
-description: university and personal projects
+description: 
 nav: true
 nav_order: 3
 display_categories: [work, fun]
 horizontal: false
 ---
 <style>
+/* Light Theme - Default */
+:root {
+  --highlight-light: rgb(215, 230, 251); /* Light blue */
+}
+
+/* Dark Theme */
+html[data-theme="dark"] {
+  --highlight-dark: rgb(39, 85, 120); /* Dark blue */
+}
+
+/* Highlight Class */
+.highlight {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::before {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: var(--highlight-light); /* Default to light theme color */
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* Dark theme: change the background to dark blue */
+html[data-theme="dark"] .highlight::before {
+  background: var(--highlight-dark); /* Dark blue for dark theme */
+}
+</style>
+
+<p> Engineering offers a means to merge curiosity with methodical problem-solving, unraveling the complexities of how things function and transforming abstract ideas into tangible outcomes. It is as much an intellectual pursuit as it is a creative one. There is an undeniable adrenaline with unraveling how things work, piecing them together, and transforming abstract ideas into tangible realities. Here are some <span class="highlight">fun projects </span> throughout the years.</p>
+
+
+<style>
   :root {
   --matte-white: rgb(255, 255, 255); /* Slightly dark white */
   --matte-black: rgb(34, 34, 34); /* Slightly black/grey for dark theme */
-
   /* Light Theme Colors */
   --h1-light-color: rgb(0, 0, 66); /* Black color for h1 in light theme */
   --p-light-color:rgb(29, 29, 82); /* Slightly lighter black for p in light theme */
-
   /* Dark Theme Colors */
   --h1-dark-color: white; /* White color for h1 in dark theme */
   --p-dark-color: rgb(200, 200, 200); /* Lighter white for p in dark theme */
@@ -152,6 +188,7 @@ html[data-theme="dark"] {
         </div>
         <article>
           <h1>engine</h1>
+          <p> First assembly & animation </p>
           <span>SolidWorks</span>
         </article>
       </a>
