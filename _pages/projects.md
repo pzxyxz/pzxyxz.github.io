@@ -11,7 +11,7 @@ horizontal: false
 <style>
 /* Light Theme - Default */
 :root {
-  --highlight-light: rgb(215, 230, 251); /* Light blue */
+  --highlight-light: rgb(215, 230, 251) !important; /* Light blue */
 }
 
 /* Dark Theme */
@@ -43,7 +43,7 @@ html[data-theme="dark"] .highlight::before {
 }
 </style>
 
-<p> Engineering offers a means to merge curiosity with methodical problem-solving, unraveling the complexities of how things function and transforming abstract ideas into tangible outcomes. It is as much an intellectual pursuit as it is a creative one. There is an undeniable adrenaline with unraveling how things work, piecing them together, and transforming abstract ideas into tangible realities. Here are some <span class="highlight">fun projects </span> throughout the years.</p>
+<p> I chose Mechanical Engineering because of my love for creating and designing. Here are some <span class="highlight">fun projects </span> throughout the years!</p>
 
 
 <style>
