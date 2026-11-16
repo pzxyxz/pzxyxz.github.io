@@ -1,4 +1,4 @@
-/* Shared behaviour for every page. Content lives in data.js (projects, art) and learn.js (iWannaLearn). */
+/* Shared behaviour for every page. Content lives in data.js (projects, art) and learn.js (iLearn). */
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const B = window.IMG_BASE || "";
@@ -63,7 +63,7 @@
       ["project.html?p=voxvest", "VoxVest, a wearable we built in 24 hours for deafblind people", ""],
       ["project.html?p=manta-ray", "ManTaRay, a robot manta ray that collects marina plastic", ""],
       ["art.html", "Things I make for fun", ""],
-      ["learn.html", "iWannaLearn: one new thing every week", ""] ] }
+      ["learn.html", "iLearn: one new thing every week", ""] ] }
   };
   const picker = $("#paths");
   if (picker) {
@@ -96,11 +96,11 @@
     return `<nav class="pager" aria-label="More ${label}">${prev ? `<a href="${href(prev)}"><span>← previous</span>${esc(prev.title)}</a>` : ""}${next ? `<a class="next" href="${href(next)}"><span>next →</span>${esc(next.title)}</a>` : ""}</nav>`; };
   const notFound = (el, back, label) => { el.innerHTML = `<h1>Not found</h1><p>That page doesn't exist. <a href="${back}">See all ${label}</a>.</p>`; };
 
-  /* ───────── iWannaLearn on the home page (latest 3) ───────── */
+  /* ───────── iLearn on the home page (latest 3) ───────── */
   const latest = $("#latest-learn");
   if (latest) latest.innerHTML = L.slice(0, 3).map(e => `<li><span class="d"><time datetime="${e.date}">${md(e.date)}</time></span><span><a href="entry.html?e=${e.slug}">${esc(e.title)}</a> <span class="dim">· ${esc(e.subject)}</span></span></li>`).join("") || "<li><span>Week one starts soon.</span></li>";
 
-  /* ───────── iWannaLearn list ───────── */
+  /* ───────── iLearn list ───────── */
   const learnList = $("#learn-list");
   if (learnList) {
     $("#learn-count").textContent = `(${L.length})`;
@@ -113,15 +113,15 @@
           <td class="subj">${esc(e.subject)}</td></tr>`).join("") + "</tbody></table>"; }).join("");
   }
 
-  /* ───────── single iWannaLearn entry ───────── */
+  /* ───────── single iLearn entry ───────── */
   const entry = $("#entry");
   if (entry) {
     const i = L.findIndex(e => e.slug === param("e")), e = L[i];
     if (!e) notFound(entry, "learn.html", "entries");
     else {
-      document.title = `${e.title} — iWannaLearn — Preisha Mishra`;
+      document.title = `${e.title} — iLearn — Preisha Mishra`;
       const src = (e.sources || []).length ? `<h2>sources</h2><ul class="sources">${e.sources.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join("")}</ul>` : "";
-      entry.innerHTML = `<p class="crumb"><a href="learn.html">← iWannaLearn</a></p>
+      entry.innerHTML = `<p class="crumb"><a href="learn.html">← iLearn</a></p>
         <h1>${esc(e.title)}</h1>
         <p class="meta"><time datetime="${e.date}">${long(e.date)}</time> · ${esc(e.subject)}${e.kind ? " · " + esc(e.kind) : ""}</p>
         ${renderBody(e.body)}${src}${pager(L, i, x => `entry.html?e=${x.slug}`, "entries")}`;
