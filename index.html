@@ -1,236 +1,103 @@
-/* =====================================================================
-   preisha mishra — style.css
-   Two fonts only: Instrument Serif (name + page titles + quotes)
-                   Manrope (everything else)
-   Two surfaces:   .cover (about, projects, iWannaLearn, art: dark navy leather)
-                   .paper (a single project or entry: lighter blue, grid)
-   ===================================================================== */
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preisha Mishra</title>
+<meta name="theme-color" content="#19254f">
+<meta name="description" content="Preisha Mishra — mechanical engineer at Rutgers. Mechanisms, batteries, cold plasma, and things that move us forward.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- fallbacks only; your licensed Amorisa + ID Grotesk files go in assets/fonts/ -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body id="top" class="cover">
+<div class="emboss" aria-hidden="true"><span class="p">P</span><span class="m">M</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header>
+<nav aria-label="Main">
+  <a class="me" href="index.html" aria-label="Preisha Mishra, home">∞</a>
+  <span class="links"><a href="index.html" aria-current="page">about</a><a href="projects.html">projects</a><a href="learn.html">iLearn</a><a href="art.html">art</a>
+    <button class="a11y-btn" id="a11y-toggle" aria-expanded="false" aria-controls="a11y-panel" title="Accessibility options"><span aria-hidden="true">Aa</span><span class="vh">Accessibility options</span></button>
+  </span>
+</nav>
+<div class="a11y-panel" id="a11y-panel" hidden role="group" aria-label="Accessibility options">
+  <div class="row"><span>Text size <output id="a11y-size-out">100%</output></span><span><button id="a11y-smaller" aria-label="Smaller text">A−</button><button id="a11y-bigger" aria-label="Larger text">A+</button></span></div>
+  <div class="row"><span>High contrast</span><button id="a11y-contrast" aria-pressed="false">Off</button></div>
+  <div class="row"><span>Reduce motion</span><button id="a11y-calm" aria-pressed="false">Off</button></div>
+  <div class="row"><button id="a11y-listen" class="wide">Read this page aloud</button></div>
+</div>
+</header>
+<main id="main" tabindex="-1">
+<!-- ============ HEADER ============ -->
+<img class="photo" width="168" height="168" src="assets/img/profile.jpg" onerror="this.onerror=null;this.src='https://framerusercontent.com/images/kz869j81BmHrBGPgJPBhJcfjQ.jpg?scale-down-to=512'" alt="Portrait of Preisha Mishra">
+<p class="kicker"><span> mechE & math @ rutgers - nb </span></p>
+<h1><span class="sig">Preisha M.</span>
+<p class="sub"> building things that move us forward :)</p>
 
-:root {
-  --cover: #11244a;          /* home: notebook cover */
-  --paper: #234d86;          /* inner pages: notebook paper */
-  --deep:  #0c1a38;          /* deboss + dialogs */
 
-  --ink:   #ffffff;                    /* titles */
-  --text:  rgba(255, 255, 255, .92);   /* body copy — near white, not grey */
-  --soft:  rgba(255, 255, 255, .74);   /* secondary info only (meta, captions) */
-  --label: #a9c4f5;                    /* small uppercase labels */
-  --rule:  rgba(255, 255, 255, .14);   /* hairlines */
-  --pill:  rgba(255, 255, 255, .14);   /* current page */
-  --grid:  rgba(255, 255, 255, .08);
+<!-- ============ CURRENTLY ============ -->
+<h2 id="currently"> @ present</h2>  
+<p> student, builder, founder </p>
 
-  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --sans:  "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+<!-- ============ ACADEMICALLY ============ -->
+<h2 id="academically">academically</h2> 
+<p> Exploring things to find intersections for intentional builds. Also working on my JJ Slade thesis: 3-D spatial mapping of anisotropic material via thermal transport.<p>
 
-  --measure: 680px;
-}
+</p><a href="https://www.sciencedirect.com/science/article/pii/S2405580825003838?via%3Dihub"><em> First paper! </em></a>; <a href="https://drive.google.com/file/d/1N7bkVFWSc3u7Q5PRSx1ruJ6B2C8jUXfc/view"><em> PPPL GSS flash talk</em></a>; <a href="project.html?p=voxvest"><em> VoxVest (Best Social Good) </em></a>; <a href="project.html?p=manta-ray"><em> MantaRay Robot (3rd Place) </em></a> </p>
 
-/* ---------- base ---------- */
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; background: var(--cover); }
-html:has(body.paper) { background: var(--paper); }
-body {
-  margin: 0; min-height: 100vh;
-  font: 400 calc(16px * var(--scale, 1))/1.65 var(--sans);
-  color: var(--text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-}
-body.cover { background: var(--cover); }
-body.paper {
-  --soft: rgba(255, 255, 255, .80); --label: #c9dbfb; --rule: rgba(255, 255, 255, .22);
-  background-color: var(--paper);
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 32px 32px; background-position: -1px -1px; background-attachment: fixed;
-}
-::selection { background: #fff; color: var(--cover); }
+<!-- ============ FORMERLY ============ -->
+<h2 id="formerly"> in the past</h2>
+<p> Violist, pianist, singer, composer, black-belt in Taekwondo, T&F Varsity Captain </p>
 
-.wrap { position: relative; z-index: 1; max-width: var(--measure); margin: 0 auto; padding: 48px 24px 72px; }
 
-p { margin: 0 0 14px; }
-ul, ol { margin: 0 0 14px; padding-left: 20px; }
-li { margin-bottom: 6px; }
-li::marker { color: var(--label); }
-strong, b { color: var(--ink); font-weight: 600; }
-em { font-style: italic; }
-.dim { color: var(--soft); }
+<!-- ============ WRITING ============ -->
+<h2><a href="learn.html">iLearn →</a></h2>
+<p class="dim"> Trying to document learning one new thing every week. </p>
+<ul class="rows" id="latest-learn"></ul>
 
-a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, .4); transition: text-decoration-color .2s; }
-a:hover { text-decoration-color: #fff; }
-
-/* ---------- leather texture on the cover pages ---------- */
-/* fine grain + soft pebbling + gentle light falloff, like a leather notebook cover */
-body.cover {
-  background-color: var(--cover);
-  background-image:
-    radial-gradient(120% 70% at 50% -10%, rgba(255, 255, 255, .06), transparent 60%),
-    radial-gradient(140% 100% at 50% 120%, rgba(0, 0, 0, .30), transparent 60%);
-  background-attachment: fixed;
-}
-body.cover::before {
-  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.16' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
-  background-size: 240px 240px, 320px 320px;
-  opacity: .5; mix-blend-mode: soft-light;
-}
-
-/* ---------- nav ---------- */
-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 56px; }
-nav .me { font-family: var(--serif); font-style: italic; font-size: 26px; line-height: 1; color: var(--ink); text-decoration: none; text-transform: lowercase; }
-nav .links { display: flex; align-items: center; gap: 2px; font-size: 14px; }
-nav .links a { color: var(--soft); text-decoration: none; padding: 4px 11px; border-radius: 999px; transition: color .2s, background .2s; }
-nav .links a:hover { color: var(--ink); }
-nav .links a[aria-current] { color: var(--ink); background: var(--pill); }
-
-/* ---------- home header ---------- */
-.photo { float: right; width: 136px; height: 136px; object-fit: cover; object-position: center 25%; border-radius: 50%; margin: 4px 0 16px 28px; background: #1f4a85; }
-.kicker { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; }
-h1 { margin: 0 0 10px; color: var(--ink); font-weight: 400; line-height: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
-h1 .sig  { font-family: var(--serif); font-style: italic; font-size: 56px; letter-spacing: -.01em; text-transform: lowercase; }
-h1 .last { font-family: var(--sans); font-weight: 300; font-size: 34px; letter-spacing: -.02em; }
-.sub { font-size: 16px; color: var(--soft); margin: 0 0 24px; }
-
-/* ---------- section + page titles ---------- */
-/* section headings: Manrope, lowercase, like alexzhang13.github.io */
-h2 { clear: both; font-family: var(--sans); font-size: 20px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; color: var(--ink); margin: 52px 0 12px; }
-h2 a { color: inherit; text-decoration: none; }
-h2 a:hover { text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .5); }
-/* page titles: the serif */
-.page-title, .single h1 { display: block; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 40px; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); margin: 0 0 8px; }
-.page-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-.page-head .count { font-size: 13px; color: var(--soft); }
-
-/* small uppercase labels — one style everywhere */
-.kicker, .rows .d, .index th, .single .meta, dl.skills dt, .feedback figcaption, .pager span, .figs figcaption {
-  font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--label);
-}
-
-/* ---------- start-here picker ---------- */
-.start { margin: 24px 0 0; }
-.lead { font-size: 16px; font-weight: 600; color: var(--ink); margin: 0 0 10px; }
-.paths { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
-.paths button, .a11y-panel button, .a11y-btn, .viewer-close {
-  font: 500 13.5px/1 var(--sans); color: var(--ink); background: transparent; cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, .3); border-radius: 999px; padding: 8px 14px; transition: background .2s, border-color .2s, color .2s;
-}
-.paths button:hover, .a11y-panel button:hover, .a11y-btn:hover { border-color: #fff; }
-.paths button[aria-pressed="true"], .a11y-panel button[aria-pressed="true"], .a11y-btn[aria-expanded="true"] { background: #fff; border-color: #fff; color: var(--cover); }
-#start-note { margin-bottom: 8px; }
-#start-list li { margin-bottom: 6px; }
-
-/* ---------- dated rows (iWannaLearn on home) ---------- */
-.rows { list-style: none; padding: 0; margin: 0; }
-.rows li { display: grid; grid-template-columns: 72px 1fr; gap: 14px; padding: 8px 0; margin: 0; border-bottom: 1px solid var(--rule); }
-.rows li:first-child { border-top: 1px solid var(--rule); }
-.rows .d { padding-top: 4px; }
-
-/* ---------- principles ---------- */
-.principles { list-style: none; padding: 0; margin: 0; counter-reset: pr; }
-.principles li { counter-increment: pr; display: grid; grid-template-columns: 34px 1fr; padding: 7px 0; margin: 0; font-weight: 500; color: var(--ink); }
-.principles li::before { content: counter(pr, decimal-leading-zero); font-size: 11px; font-weight: 600; letter-spacing: .12em; color: var(--label); padding-top: 4px; }
-
-/* ---------- expert feedback ---------- */
-.feedback { list-style: none; padding: 0; margin: 4px 0 0; }
-.feedback li { margin: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); }
-.feedback li:first-child { border-top: 1px solid var(--rule); }
-.feedback figure, .feedback blockquote { margin: 0; }
-.feedback .q { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 21px; line-height: 1.38; letter-spacing: -.003em; color: var(--ink); margin: 0 0 10px; }
-.feedback .more { font-size: 15px; line-height: 1.65; color: var(--text); margin: 0 0 14px; }
-.feedback figcaption b { color: var(--ink); font-weight: 700; }
-
-/* ---------- toolkit (if used) ---------- */
-dl.skills { margin: 0; }
-dl.skills div { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
-dl.skills dt { padding-top: 4px; }
-dl.skills dd { margin: 0; }
-
-/* ---------- index tables: projects + iWannaLearn ---------- */
-.index { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 40px; }
-.index caption { text-align: left; font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--ink); padding: 0 0 10px; }
-.index caption span { font-size: 13px; font-weight: 400; color: var(--soft); margin-left: 6px; }
-.index th { text-align: left; padding: 0 12px 8px 0; border-bottom: 1px solid var(--rule); }
-.index td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-.index th:last-child, .index td:last-child { text-align: right; padding-right: 0; }
-.index .date { width: 72px; white-space: nowrap; color: var(--soft); font-variant-numeric: tabular-nums; }
-.index .star { margin-right: 6px; color: var(--ink); }
-.index a { color: var(--ink); font-weight: 500; text-decoration: none; background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px; transition: background-size .25s; }
-.index a:hover, .index a:focus-visible { background-size: 100% 1px; }
-.index .ctx, .index .subj { color: var(--soft); }
-.index .subj { white-space: nowrap; }
-
-/* ---------- single project / entry page ---------- */
-.crumb { font-size: 13px; margin: 0 0 16px; }
-.crumb a { color: var(--soft); text-decoration: none; }
-.crumb a:hover { color: var(--ink); }
-.single .meta { margin: 0 0 24px; line-height: 1.7; }
-.single h2 { font-size: 18px; margin: 36px 0 8px; }
-.single .note { color: var(--soft); font-style: italic; }
-.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14px; }
-.pager a { text-decoration: none; }
-.pager a:hover { text-decoration: underline; }
-.pager span { display: block; margin-bottom: 2px; }
-.pager .next { text-align: right; margin-left: auto; }
-
-/* ---------- figures, art, viewer ---------- */
-.figs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 12px 0 0; }
-.figs figure { margin: 0; }
-.figs img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; background: #1f4a85; display: block; }
-.figs figcaption { margin-top: 6px; letter-spacing: .06em; text-transform: none; font-weight: 500; color: var(--soft); }
-.gallery { columns: 2 240px; column-gap: 12px; }
-.gallery img { width: 100%; border-radius: 12px; display: block; }
-button.zoom { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 10px; }
-.gallery button.zoom { margin-bottom: 12px; break-inside: avoid; }
-.viewer { position: fixed; inset: 0; z-index: 30; padding: 20px; background: rgba(8, 16, 36, .96); }
-.viewer[hidden] { display: none; }
-.viewer:not([hidden]) { display: grid; grid-template-rows: auto 1fr auto; justify-items: center; gap: 12px; }
-.viewer img { max-width: 100%; max-height: 78vh; border-radius: 12px; align-self: center; }
-.viewer-close { justify-self: end; }
-.viewer-cap { margin: 0; font-size: 14px; color: var(--text); text-align: center; }
-
-/* ---------- footer ---------- */
-footer { margin-top: 72px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--soft); }
-
-/* ---------- accessibility ---------- */
-.skip { position: absolute; left: 16px; top: -60px; z-index: 40; background: #fff; color: var(--cover); padding: 10px 16px; border-radius: 10px; font-weight: 600; text-decoration: none; }
-.skip:focus { top: 16px; }
-.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 6px; }
-main:focus { outline: none; }
-header { position: relative; }
-.a11y-btn { font-weight: 700; padding: 5px 10px; margin-left: 6px; }
-.a11y-panel { position: absolute; right: 0; top: 48px; z-index: 5; width: 270px; padding: 12px 14px; border-radius: 14px; background: var(--deep); border: 1px solid rgba(255, 255, 255, .18); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .5); font-size: 14px; }
-.a11y-panel .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0; }
-.a11y-panel .row button + button { margin-left: 6px; }
-.a11y-panel .wide { width: 100%; }
-.a11y-panel output { color: var(--label); margin-left: 6px; }
-kbd { font: inherit; font-size: .85em; border: 1px solid rgba(255, 255, 255, .35); border-radius: 5px; padding: 0 5px; }
-
-/* high-contrast mode */
-.contrast { --text: #fff; --soft: #eef3ff; --label: #e2ecff; --rule: rgba(255, 255, 255, .4); --grid: transparent; }
-.contrast body, .contrast body.paper, .contrast body.cover { background: #07112a !important; }
-.contrast body.cover::before { display: none; }
-.contrast a { text-decoration-color: #fff; text-decoration-thickness: 2px; }
-
-/* reduce motion */
-.calm *, .calm *::before, .calm *::after { animation: none !important; transition: none !important; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
-
-/* ---------- phone ---------- */
-@media (max-width: 640px) {
-  .wrap { padding: 28px 18px 48px; }
-  body.paper { background-size: 24px 24px; }
-  nav { flex-wrap: wrap; row-gap: 10px; margin-bottom: 40px; }
-  nav .me { font-size: 24px; }
-  nav .links { flex-wrap: wrap; font-size: 13.5px; }
-  nav .links a { padding: 4px 8px; }
-  .a11y-panel { left: 0; width: auto; }
-  .photo { width: 92px; height: 92px; margin-left: 14px; }
-  h1 .sig { font-size: 46px; }
-  h1 .last { font-size: 26px; }
-  h2 { font-size: 19px; margin-top: 44px; }
-  .page-title, .single h1 { font-size: 32px; }
-  .feedback .q { font-size: 19px; }
-  .rows li, dl.skills div { grid-template-columns: 1fr; gap: 2px; }
-  .index .ctx-col { display: none; }
-  .index .subj { white-space: normal; }
-}
+<!-- ============ EXPERT FEEDBACK ============ -->
+<h2 id="feedback">expert feedback</h2>
+<ul class="feedback">
+  <li>
+    <figure>
+      <blockquote>
+        <p class="q">“One of Preisha’s standout qualities is her problem-solving ability. She faced challenges head-on, particularly when addressing mechanical interference in the Aux Switch design.”</p>
+        <p class="more">“Her innovative approach led to the development of a cam-type rotor insert that effectively interacted with the switch mechanism… including the short circuit test at KEMA Laboratories.”</p>
+      </blockquote>
+      <figcaption><b>Ansel Reid</b> · Principal Engineer, High Ampacity Safety Switches · ABB</figcaption>
+    </figure>
+  </li>
+  <li>
+    <figure>
+      <blockquote>
+        <p class="q">“Preisha possesses a rare combination of independence, efficiency, and creative problem-solving skills that make her an invaluable asset to any team.”</p>
+        <p class="more">“One of Preisha’s standout traits is her sense of ownership—not only in her responsibilities but also in her mistakes.”</p>
+      </blockquote>
+      <figcaption><b>Dhirendra Tiwari</b> · Chapter Leader, NEMA Solutions Engineering Switches · ABB</figcaption>
+    </figure>
+  </li>
+  <li>
+    <figure>
+      <blockquote>
+        <p class="q">“Perhaps most impressive is the speed at which Preisha acquires new technical skills. Her technical growth trajectory is truly exceptional.”</p>
+        <p class="more">“She rapidly developed proficiency in Creo, producing detailed 3D models and engineering drawings that met professional standards in a remarkably short period.”</p>
+      </blockquote>
+      <figcaption><b>Ryan F. Sparrow</b> · Senior Design Engineer · ABB Inc.</figcaption>
+    </figure>
+  </li>
+</ul>
+  
+<!-- ============ CONTACT ============ -->
+<h2 id="contact">contact</h2>
+<p><a href="https://www.linkedin.com/in/preisha-mishra/">linkedin</a>, <a href="preisha1mishra@gmail.com">email</a>
+</main>
+<footer>© 2026 Preisha Mishra · <a href="accessibility.html">accessibility</a></footer>
+</div>
+<script src="data.js"></script>
+<script src="learn.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
