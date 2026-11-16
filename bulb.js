@@ -1,8 +1,13 @@
 /* =========================================================================
    bulb.js — a little lightbulb who hops in, finds the "i" in your name,
    screws herself onto its dot, and lights up.
-   Home page only. Plays once per visit (per browser tab); after that she's
-   already lit. Click her to switch the light off / on.
+
+   Talk to her:
+     click once      -> light off / on
+     double-click    -> she hides (the "i" gets its normal dot back)
+     try to drag her -> she bolts, then comes back from somewhere new with a
+                        different routine every time
+   Plays once per visit (per tab); after that she's already lit.
    Respects "reduce motion" (she just appears, already lit).
    ========================================================================= */
 (() => {
@@ -77,104 +82,203 @@
   const face = f => svg.dataset.face = f;               // curious | searching | spotted | effort | joy | dark
   const look = (x, y = 0) => svg.style.setProperty("--look", `translate(${x}px, ${y}px)`);
   const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-  /* ---------- 3. geometry: where is the dot of the "i"? ---------- */
+  /* ---------- 3. geometry ---------- */
   function target() {
     const stem = sig.querySelector(".i-stem"), base = sig.querySelector(".i-base");
     const em = parseFloat(getComputedStyle(sig).fontSize);
     const r = stem.getBoundingClientRect(), baseline = base.getBoundingClientRect().top;
     const slant = Math.tan(13 * Math.PI / 180);          // Instrument Serif italic lean
     const rise = 0.60 * em;                              // dot height above the baseline
-    return {
-      x: r.left + r.width * 0.5 + slant * rise + scrollX,
-      y: baseline - rise + scrollY,
-      em
-    };
+    return { x: r.left + r.width * 0.5 + slant * rise + scrollX, y: baseline - rise + scrollY, em };
   }
-  function size(em) { const h = Math.max(36, em * 0.82); return { w: h * W / H, h }; }
-  // place the bulb so its base contact point (30,84) sits at (x, y)
-  function place(x, y, s) {
-    wrap.style.width = s.w + "px"; wrap.style.height = s.h + "px";
-    wrap.style.left = (x - s.w * 30 / W) + "px";
-    wrap.style.top = (y - s.h * 84 / H) + "px";
+  // her size: change 0.6 to make her bigger / smaller
+  function size(em) { const h = Math.max(30, em * 0.6); return { w: h * W / H, h }; }
+  let pos = { x: 0, y: 0 }, S = { w: 0, h: 0 };
+  // place her so her base contact point (30,84) sits at (x, y)
+  function place(x, y) {
+    pos = { x, y };
+    wrap.style.width = S.w + "px"; wrap.style.height = S.h + "px";
+    wrap.style.left = (x - S.w * 30 / W) + "px";
+    wrap.style.top = (y - S.h * 84 / H) + "px";
   }
   function placeDot(t) {
     const d = Math.max(6, t.em * 0.13);
     Object.assign(dot.style, { width: d + "px", height: d + "px", left: (t.x - d / 2) + "px", top: (t.y - d / 2) + "px" });
   }
 
-  /* ---------- 4. light switch (click her) ---------- */
+  /* ---------- 4. a real hop: crouch → launch → lean through the air → squash → settle ---------- */
+  function hop(x1, y1, height, ms = 640, extra = {}) {
+    const x0 = pos.x, y0 = pos.y, dir = Math.sign(x1 - x0) || 1, lean = (extra.lean ?? 12) * dir;
+    const spin = extra.flip ? 360 * dir : 0;
+    const k = [];
+    const T = (dx, dy, sx, sy, r) => `translate(${dx}px, ${dy}px) rotate(${r}deg) scale(${sx}, ${sy})`;
+    // all keyframes are relative to the landing spot (x1, y1)
+    k.push({ offset: 0,    transform: T(x0 - x1, y0 - y1, 1, 1, 0) });
+    k.push({ offset: .16,  transform: T(x0 - x1, y0 - y1, 1.18, .74, -lean * .4), easing: "cubic-bezier(.3,0,.2,1)" }); // crouch (anticipation)
+    k.push({ offset: .24,  transform: T(x0 - x1, y0 - y1 - 2, .82, 1.24, lean * .6) });                                   // spring off, stretched
+    const N = 8;
+    for (let i = 1; i < N; i++) {                                                                                          // the arc
+      const p = i / N, x = x0 + (x1 - x0) * p, y = y0 + (y1 - y0) * p - height * 4 * p * (1 - p);
+      const st = 1 + .1 * Math.cos(p * Math.PI);                                                                          // stretched going up/down, round at the top
+      k.push({ offset: .24 + .52 * p, transform: T(x - x1, y - y1, 2 - st, st, lean * (1 - 2 * p) + spin * p) });
+    }
+    k.push({ offset: .76,  transform: T(0, 0, .9, 1.14, -lean * .5 + spin) });                                            // touch down
+    k.push({ offset: .84,  transform: T(0, 0, 1.22, .76, 0 + spin), easing: "ease-out" });                                // squash
+    k.push({ offset: .93,  transform: T(0, 0, .95, 1.06, 0 + spin) });                                                    // rebound
+    k.push({ offset: 1,    transform: T(0, 0, 1, 1, spin) });
+    place(x1, y1);
+    return wrap.animate(k, { duration: ms, easing: "linear" }).finished;
+  }
+  const bounce = (h = 6, ms = 300) => wrap.animate([
+    { transform: "scale(1,1)" }, { transform: "scale(1.12,.86)", offset: .2 },
+    { transform: `translateY(${-h}px) scale(.92,1.1)`, offset: .55 }, { transform: "scale(1.08,.92)", offset: .85 }, { transform: "none" }
+  ], { duration: ms }).finished;
+
+  /* ---------- 5. her moves (mixed and matched every time) ---------- */
+  const lookAround = async () => { face("searching"); look(-1.6); await sleep(360); look(1.6); await sleep(360); look(-1.2, -1); await sleep(300); };
+  const doubleTake = async () => { face("searching"); look(1.6); await sleep(420); look(-1.6); await sleep(140); face("spotted"); look(-1.8, -1.4); await bounce(4, 240); await sleep(240); };
+  const twirl = async () => { face("curious"); await wrap.animate([{ transform: "rotate(0)" }, { transform: "rotate(-12deg) scale(1.08,.92)", offset: .2 }, { transform: "rotate(360deg)" }], { duration: 650, easing: "ease-in-out" }).finished; };
+  const tiptoe = async () => { face("curious"); for (let i = 0; i < 3; i++) await bounce(3, 200); };
+  const peekUp = async () => { face("curious"); look(-.6, -1.8); await sleep(500); look(0, 0); await sleep(220); };
+  const excited = async () => { face("spotted"); await bounce(8, 320); await bounce(6, 280); };
+  const MIDDLES = { lookAround, doubleTake, twirl, tiptoe, peekUp };
+
+  async function screwIn(turns) {
+    face("effort"); look(0);
+    const k = [];
+    for (let i = 0; i <= turns * 2; i++) k.push({ transform: `translateY(${i * .4}px) scaleX(${i % 2 ? -1 : 1})`, offset: i / (turns * 2) });
+    await wrap.animate(k, { duration: 300 * turns, easing: "ease-in-out" }).finished;
+    await wrap.animate([{ transform: "translateY(2px)" }, { transform: "none" }], { duration: 160 }).finished;
+  }
+
+  /* ---------- 6. the routine: a different combination each time ---------- */
+  let last = "";
+  function newPlan() {
+    let plan, key, n = 0;
+    do {
+      plan = {
+        entry: pick(["right", "left", "drop"]),
+        hops: Math.floor(rand(1, 4)),
+        middle: [...Object.keys(MIDDLES)].sort(() => Math.random() - .5).slice(0, Math.random() < .5 ? 1 : 2),
+        finale: pick(["jump", "flip", "stepJump"]),
+        turns: Math.floor(rand(2, 5))
+      };
+      key = [plan.entry, plan.hops, plan.middle.join("+"), plan.finale].join("|");
+    } while (key === last && ++n < 10);
+    last = key;
+    return plan;
+  }
+
+  let state = "idle";                                   // idle | playing | done | gone
+  async function play(plan) {
+    state = "playing";
+    wrap.classList.remove("done", "on", "pop", "gone");
+    wrap.getAnimations().forEach(a => a.cancel());
+    const t = target(); S = size(t.em); placeDot(t);
+    const box = document.querySelector(".wrap").getBoundingClientRect();
+    const sub = document.querySelector(".sub") || sig;
+    const floor = sub.getBoundingClientRect().bottom + scrollY + S.h * 0.95;
+    const left = box.left + scrollX, right = box.right + scrollX;
+    const step = S.w * 2.2;
+
+    // entry
+    face("curious"); look(plan.entry === "left" ? 1.4 : -1.4);
+    wrap.classList.add("show");
+    if (plan.entry === "drop") {
+      const x = rand(left + S.w, right - S.w);
+      place(x, scrollY - S.h);                           // above the top of the screen
+      await wrap.animate([{ transform: "translateY(0)" }, { transform: `translateY(${floor - (scrollY - S.h)}px) scale(.9,1.12)`, offset: .85, easing: "ease-in" }, { transform: `translateY(${floor - (scrollY - S.h)}px) scale(1.25,.72)` }], { duration: 700, easing: "cubic-bezier(.5,0,1,1)" }).finished;
+      place(x, floor); await bounce(10, 380);
+    } else {
+      const from = plan.entry === "left" ? left - S.w : right + S.w;
+      place(from, floor);
+      await hop(from + (plan.entry === "left" ? step : -step), floor, S.h * .6, 600);
+    }
+
+    // hops toward the "i" (stop a little to its side)
+    const side = pos.x > t.x ? 1 : -1;
+    const near = t.x + side * S.w * 1.6;
+    for (let i = plan.hops; i >= 1; i--) {
+      const x = near + (pos.x - near) * ((i - 1) / i);
+      face(i === 1 ? "searching" : "curious");
+      await hop(x, floor, S.h * rand(.45, .75), rand(560, 700));
+      await sleep(rand(80, 200));
+    }
+
+    // a little personality
+    for (const m of plan.middle) await MIDDLES[m]();
+
+    // spot it
+    face("spotted"); look(-side * .8, -1.8);
+    await excited(); await sleep(250);
+
+    // get up there
+    look(0, -1);
+    const up = S.h * 1.0 + (floor - t.y) * .45;
+    if (plan.finale === "stepJump") {
+      await hop(t.x + side * S.w * .7, (floor + t.y) / 2 + S.h * .3, S.h * .7, 560);   // a small hop first
+      await hop(t.x, t.y, S.h * .9, 600);
+    } else {
+      await hop(t.x, t.y, up, 760, { flip: plan.finale === "flip" });
+    }
+
+    await screwIn(plan.turns);
+    finish(true);
+  }
+
+  /* ---------- 7. lit, off, hidden ---------- */
   let lit = false;
   const light = on => { lit = on; wrap.classList.toggle("on", on); face(on ? "joy" : "dark"); };
-  wrap.addEventListener("click", () => { if (wrap.classList.contains("done")) light(!lit); });
+  const settle = () => { const t = target(); S = size(t.em); placeDot(t); place(t.x, t.y); };
+  function finish(pop) {
+    settle(); state = "done"; wrap.classList.add("show", "done"); light(true);
+    if (pop) { wrap.classList.remove("pop"); void wrap.offsetWidth; wrap.classList.add("pop"); }
+    try { sessionStorage.setItem("bulb-seen", "1"); } catch {}
+  }
+  async function hide() {
+    state = "gone";
+    await wrap.animate([{ transform: "none", opacity: 1 }, { transform: "scale(1.15,.85)", offset: .25 }, { transform: "translateY(-14px) scale(0)", opacity: 0 }], { duration: 380, easing: "ease-in" }).finished;
+    wrap.classList.add("gone"); wrap.classList.remove("show", "done", "on");
+  }
+  async function runAway() {
+    state = "playing"; wrap.classList.remove("done", "pop");
+    face("spotted");
+    const dir = pick([-1, 1]);
+    await wrap.animate([{ transform: "none" }, { transform: "scale(1.2,.8)", offset: .2 }, { transform: `translate(${dir * 60}px, -80px) rotate(${dir * 200}deg) scale(.2)`, opacity: 0 }], { duration: 450, easing: "cubic-bezier(.5,0,1,1)" }).finished;
+    wrap.classList.remove("show");
+    await sleep(500);
+    play(newPlan());
+  }
+  addEventListener("resize", () => { if (state === "done") settle(); });
 
-  const settle = () => { const t = target(); placeDot(t); place(t.x, t.y, size(t.em)); };
-  addEventListener("resize", () => { if (wrap.classList.contains("done")) settle(); });
+  /* ---------- 8. her controls: tap, double-tap, drag ---------- */
+  let downAt = null, dragged = false, tapTimer = null;
+  wrap.addEventListener("pointerdown", e => { downAt = { x: e.clientX, y: e.clientY }; dragged = false; wrap.setPointerCapture(e.pointerId); });
+  wrap.addEventListener("pointermove", e => {
+    if (!downAt || dragged) return;
+    if (Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 8) {
+      dragged = true; downAt = null; clearTimeout(tapTimer); tapTimer = null;
+      if (state === "done") runAway();
+    }
+  });
+  wrap.addEventListener("pointerup", () => {
+    if (!downAt) return;
+    downAt = null;
+    if (state !== "done") return;
+    if (tapTimer) { clearTimeout(tapTimer); tapTimer = null; hide(); return; }    // second tap = double-click
+    tapTimer = setTimeout(() => { tapTimer = null; if (state === "done") light(!lit); }, 260);
+  });
+  wrap.addEventListener("dragstart", e => e.preventDefault());
 
+  /* ---------- 9. go ---------- */
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("calm");
   let seen = false; try { seen = sessionStorage.getItem("bulb-seen") === "1"; } catch {}
-
-  const finish = () => { settle(); wrap.classList.add("done"); light(true); try { sessionStorage.setItem("bulb-seen", "1"); } catch {} };
-
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(async () => {
-    const t = target(), s = size(t.em);
-    placeDot(t);
-    if (reduce || seen) { finish(); return; }
-
-    /* ---------- 5. the little story ---------- */
-    const wrapEl = document.querySelector(".wrap").getBoundingClientRect();
-    const sub = document.querySelector(".sub") || sig;
-    const floor = sub.getBoundingClientRect().bottom + scrollY + s.h * 0.95;   // she walks in the space under your tagline
-    const startX = wrapEl.right + scrollX + s.w;                        // off to the right
-    const nearX = t.x + s.w * 1.6;                                      // a little right of the "i"
-    const hop = (x0, x1, y0, y1, height, ms) => {
-      // arc from (x0,y0) to (x1,y1), with squash on take-off and landing
-      const k = [];
-      for (let i = 0; i <= 10; i++) {
-        const p = i / 10, x = x0 + (x1 - x0) * p, y = y0 + (y1 - y0) * p - height * 4 * p * (1 - p);
-        const sq = i === 0 || i === 10 ? "scale(1.12, .86)" : i === 1 || i === 9 ? "scale(.94, 1.08)" : "scale(1,1)";
-        k.push({ transform: `translate(${x - x1}px, ${y - y1}px) ${sq}`, offset: p });
-      }
-      place(x1, y1, s);
-      return wrap.animate(k, { duration: ms, easing: "linear" }).finished;
-    };
-
-    wrap.classList.add("show");
-    place(startX, floor, s);
-
-    // peek in, curious, looking left
-    face("curious"); look(-1.4);
-    await hop(startX, startX - s.w * 1.4, floor, floor, s.h * 0.35, 520);
-    // two little hops toward the name
-    const mid = (startX - s.w * 1.4 + nearX) / 2;
-    await hop(startX - s.w * 1.4, mid, floor, floor, s.h * 0.5, 480);
-    await hop(mid, nearX, floor, floor, s.h * 0.5, 480);
-
-    // where is it? look around
-    face("searching");
-    look(-1.6); await sleep(380);
-    look(1.6);  await sleep(380);
-    look(-1.6, -1); await sleep(320);
-
-    // there! look up at the dot
-    look(-0.8, -1.8); face("spotted");
-    wrap.animate([{ transform: "translateY(0)" }, { transform: "translateY(-6px)" }, { transform: "translateY(0)" }], { duration: 260, easing: "ease-out" });
-    await sleep(650);
-
-    // big jump onto the dot
-    look(0, -1);
-    await hop(nearX, t.x, floor, t.y, s.h * 1.1 + (floor - t.y) * 0.4, 720);
-
-    // twist, twist, twist — screwing herself in
-    face("effort"); look(0);
-    const twist = [];
-    for (let i = 0; i <= 6; i++) twist.push({ transform: `translateY(${i * 0.5}px) scaleX(${i % 2 ? -1 : 1})`, offset: i / 6 });
-    await wrap.animate(twist, { duration: 1100, easing: "ease-in-out" }).finished;
-    wrap.animate([{ transform: "translateY(3px)" }, { transform: "translateY(0)" }], { duration: 160 });
-    await sleep(220);
-
-    // click — light!
-    finish();
-    wrap.classList.add("pop");
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+    const t = target(); S = size(t.em); placeDot(t);
+    if (reduce || seen) finish(false);
+    else play(newPlan());
   });
 })();
