@@ -88,7 +88,8 @@
   /* ---------- 3. geometry ---------- */
   function target() {
     const stem = sig.querySelector(".i-stem"), base = sig.querySelector(".i-base");
-    const em = parseFloat(getComputedStyle(sig).fontSize);
+    const zoom = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--zoom")) || 1;
+    const em = parseFloat(getComputedStyle(sig).fontSize) * zoom;
     const r = stem.getBoundingClientRect(), baseline = base.getBoundingClientRect().top;
     const slant = Math.tan(13 * Math.PI / 180);          // Instrument Serif italic lean
     const rise = 0.60 * em;                              // dot height above the baseline
@@ -248,6 +249,9 @@
     play(newPlan());
   }
   addEventListener("resize", () => { if (state === "done") settle(); });
+  // if someone turns on "Reduce motion" mid-animation, skip straight to the end
+  const calmNow = () => matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("calm");
+  document.addEventListener("a11y:change", () => { if (calmNow() && state === "playing") { wrap.getAnimations().forEach(a => a.cancel()); finish(false); } });
 
   /* ---------- 8. her controls: tap, drag ---------- */
   let downAt = null, dragged = false;
@@ -256,7 +260,7 @@
     if (!downAt || dragged) return;
     if (Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 8) {
       dragged = true; downAt = null;
-      if (state === "done") runAway();
+      if (state === "done" && !calmNow()) runAway();
     }
   });
   wrap.addEventListener("pointerup", () => {
