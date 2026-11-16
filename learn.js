@@ -39,8 +39,7 @@
      subject: "Literature",
      kind: "book",
      star: false,
-     summary: "Inspirational story of an immigrant founder who ascends socio-economic systems to eventually co-found a fintech startup for immigrants- Arcus - which gets acquired by Mastercard.",
-     sources: [["Course name", "https://..."]],
+     summary: "Inspirational story of an immigrant founder,  Edrizio De La Cruz,  who ascends socio-economic systems to eventually co-found a fintech startup for immigrants- Arcus - which gets acquired by Mastercard.",
      body: [
        "My ICE professor challenged the class to read a book in one week. Conveniently enough, I did it in a day, but not because I'm cocky or have top 0.01% reading speed. It was more so because this task was given during the week of Halloween."
         "And everyone knows what happens in college during the week of Halloween. Regardless, I sat down with my iPad and read this book cover to cover from 10 pm the night before to 5 am the day of class. It's an inspiring book for sure, and provides"
@@ -53,9 +52,8 @@ window.LEARN = [
     slug: "week-00",
     date: "2026-11-16",
     title: "week 00: the rules",
-    subject: "challenge",
+    subject: "Challenge",
     kind: "essay",
-    star: true,
     summary: "Something thoughtful every week",
     body: [
       "I'm always adding to my thought bank, and I thought it would be a good to make it a recursive and measurable substance to the public.",
