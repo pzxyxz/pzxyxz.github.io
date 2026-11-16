@@ -243,55 +243,54 @@ kbd { font: inherit; font-size: .85em; border: 1px solid rgba(255, 255, 255, .35
 .bulb svg { width: 100%; height: 100%; overflow: visible; display: block; }
 .bulb .body { transform-box: view-box; transform-origin: 30px 84px; }
 
-/* soft colors: white glass, lavender base, pink bow + blush */
-.bulb svg { --ink: #ffffff; --specs: #9cc2ff; }
-.bulb.on svg { --ink: #1d2b55; --specs: #5b8ef0; }
+/* bold palette: white glass, graphite base, square frames, red lip */
+.bulb svg { --ink: #ffffff; --frames: #ffffff; --lip: #ff4d6d; }
+.bulb.on svg { --ink: #10183a; --frames: #10183a; --lip: #d7193f; }
 .bulb path, .bulb rect, .bulb ellipse, .bulb circle { vector-effect: non-scaling-stroke; }
-.bulb .glass { fill: rgba(255, 255, 255, .10); stroke: #fff; stroke-width: 1.4; transition: fill .4s, stroke .4s; }
-.bulb .gleam { fill: none; stroke: rgba(255, 255, 255, .75); stroke-width: 1.4; stroke-linecap: round; }
-.bulb .base rect, .bulb .base path { fill: #e6e1ff; stroke: none; }
-.bulb .base rect:nth-child(2) { fill: #d6cffb; }
-.bulb .bow path { fill: #ff9ec0; stroke: none; }
-.bulb .bow circle { fill: #ff7fab; stroke: none; }
-.bulb .face * { fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
-.bulb .specs * { stroke: var(--specs); stroke-width: 1.2; }
-.bulb .pupils ellipse { fill: var(--ink); stroke: none; }
-.bulb.on .pupils ellipse { fill: #1d2b55; }
-.bulb .pupils .shine { fill: #fff; stroke: none; }
-.bulb:not(.on) .pupils ellipse { fill: #fff; }
-.bulb:not(.on) .pupils .shine { fill: #11244a; }
+.bulb .glass { fill: rgba(255, 255, 255, .08); stroke: #fff; stroke-width: 1.8; transition: fill .4s, stroke .4s; }
+.bulb .filament { fill: none; stroke: rgba(255, 255, 255, .85); stroke-width: 1.6; stroke-linecap: round; }
+.bulb .base rect, .bulb .base path { fill: #d9dfee; stroke: none; }
+.bulb .base .b2 { fill: #8f9bb8; }
+.bulb .face * { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s, fill .3s; }
+.bulb .brows path { stroke-width: 2; transition: transform .25s; transform-box: fill-box; transform-origin: center; }
+.bulb .specs * { stroke: var(--frames); stroke-width: 1.7; }
+.bulb .lid { fill: rgba(255, 255, 255, .95); stroke-width: 1.6; }
+.bulb .pupils circle, .bulb .dotp { fill: #10183a; stroke: none; }
 .bulb .pupils { transform: var(--look, none); transition: transform .25s ease; }
-.bulb .blush ellipse { fill: #ff9ec0; stroke: none; opacity: .55; transition: opacity .3s; }
-.bulb .mouth.o ellipse { fill: var(--ink); stroke: none; }
-.bulb .mouth.grin path { fill: #ff7fab; stroke: var(--ink); }
-.bulb .halo { fill: #ffe39a; opacity: 0; filter: blur(5px); transition: opacity .5s; }
-.bulb .spark path { fill: none; stroke: #ffd6e6; stroke-width: 1.3; stroke-linecap: round; opacity: 0; }
-.bulb .rays path { fill: none; stroke: #ffe39a; stroke-width: 1.3; stroke-linecap: round; opacity: 0; }
+.bulb .wing { stroke-width: 1.8; }
+.bulb .lip { fill: var(--lip); stroke: var(--lip); stroke-width: 1; }
+.bulb .halo { fill: #ffcf5a; opacity: 0; filter: blur(6px); transition: opacity .5s; }
+.bulb .spark path { fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; opacity: 0; }
+.bulb .rays path { fill: none; stroke: #ffd36a; stroke-width: 1.8; stroke-linecap: round; opacity: 0; }
 
-/* expressions — one eye set + one mouth at a time */
+/* expressions: confident, never worried */
 .bulb .eyes, .bulb .mouth { display: none; }
-[data-face="curious"]   .eyes.open,   [data-face="curious"]   .mouth.o     { display: inline; }
-[data-face="searching"] .eyes.open,   [data-face="searching"] .mouth.tight { display: inline; }
-[data-face="spotted"]   .eyes.open,   [data-face="spotted"]   .mouth.grin  { display: inline; }
-[data-face="effort"]    .eyes.squint, [data-face="effort"]    .mouth.tight { display: inline; }
-[data-face="joy"]       .eyes.happy,  [data-face="joy"]       .mouth.grin  { display: inline; }
-[data-face="dark"]      .eyes.open,   [data-face="dark"]      .mouth.smile { display: inline; }
+[data-face="curious"]   .eyes.open,   [data-face="curious"]   .mouth.smirk { display: inline; }  /* sizing the room up */
+[data-face="searching"] .eyes.narrow, [data-face="searching"] .mouth.smirk { display: inline; }  /* scanning */
+[data-face="spotted"]   .eyes.open,   [data-face="spotted"]   .mouth.grin  { display: inline; }  /* found it */
+[data-face="effort"]    .eyes.narrow, [data-face="effort"]    .mouth.flat  { display: inline; }  /* locked in */
+[data-face="joy"]       .eyes.wink,   [data-face="joy"]       .mouth.grin  { display: inline; }  /* wink, lit */
+[data-face="dark"]      .eyes.narrow, [data-face="dark"]      .mouth.smirk { display: inline; }  /* lights off, still smirking */
+[data-face="curious"] .brows .br, [data-face="joy"] .brows .br { transform: translateY(-2px) rotate(-6deg); }   /* one raised brow */
+[data-face="spotted"] .brows path { transform: translateY(-2.5px); }
+[data-face="effort"] .brows .bl { transform: translateY(1px) rotate(6deg); }
+[data-face="effort"] .brows .br { transform: translateY(1px) rotate(-6deg); }
 [data-face="spotted"] .spark path { opacity: 1; }
-[data-face="spotted"] .blush ellipse, [data-face="joy"] .blush ellipse { opacity: .95; }
 
 /* lit */
-.bulb.on .glass { fill: url(#bulb-glow); stroke: #ffe39a; }
-.bulb.on .gleam { stroke: rgba(255, 255, 255, .9); }
-.bulb.on .halo { opacity: .5; animation: bulb-breathe 3.2s ease-in-out infinite; }
-.bulb.on .rays path { opacity: .9; }
+.bulb.on .glass { fill: url(#bulb-glow); stroke: #ffd36a; }
+.bulb.on .filament { stroke: #fff4cc; }
+.bulb.on .lid { fill: #fffdf5; }
+.bulb.on .halo { opacity: .55; animation: bulb-breathe 3.2s ease-in-out infinite; }
+.bulb.on .rays path { opacity: .95; }
 .bulb.pop .body { animation: bulb-pop .45s cubic-bezier(.3, 1.6, .5, 1); }
-@keyframes bulb-pop { 0% { transform: scale(1); } 40% { transform: scale(1.12, .92); } 100% { transform: scale(1); } }
-@keyframes bulb-breathe { 50% { opacity: .28; } }
-.bulb.done:hover .body { animation: bulb-wiggle .5s ease-in-out; }
-@keyframes bulb-wiggle { 25% { transform: rotate(-7deg); } 75% { transform: rotate(7deg); } }
+@keyframes bulb-pop { 0% { transform: scale(1); } 40% { transform: scale(1.1, .92); } 100% { transform: scale(1); } }
+@keyframes bulb-breathe { 50% { opacity: .3; } }
+.bulb.done:hover .body { animation: bulb-tilt .6s ease-in-out; }
+@keyframes bulb-tilt { 40% { transform: rotate(-8deg); } 100% { transform: rotate(0); } }
 
 .contrast .bulb .halo { display: none; }
 @media (prefers-reduced-motion: reduce) { .bulb .halo { animation: none !important; } }
 
 /* make room above the name for her to stand on the "i" */
-.has-bulb h1 { margin-top: 30px; }
+.has-bulb h1 { margin-top: 26px; }
