@@ -2,8 +2,8 @@
    preisha mishra — style.css
    Two fonts only: Instrument Serif (name + page titles + quotes)
                    Manrope (everything else)
-   Two surfaces:   .cover (home, dark navy, debossed P M)
-                   .paper (inner pages, lighter blue, grid)
+   Two surfaces:   .cover (about, projects, iWannaLearn, art: dark navy leather)
+                   .paper (a single project or entry: lighter blue, grid)
    ===================================================================== */
 
 :root {
@@ -56,15 +56,23 @@ em { font-style: italic; }
 a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, .4); transition: text-decoration-color .2s; }
 a:hover { text-decoration-color: #fff; }
 
-/* ---------- debossed P M on the cover ---------- */
-.emboss { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-.emboss span {
-  position: absolute; font-family: var(--sans); font-weight: 700; line-height: .8; letter-spacing: -.05em;
-  color: #0d1d3e;
-  text-shadow: -3px -3px 4px rgba(0, 0, 0, .40), 2px 2px 2px rgba(255, 255, 255, .06);
+/* ---------- leather texture on the cover pages ---------- */
+/* fine grain + soft pebbling + gentle light falloff, like a leather notebook cover */
+body.cover {
+  background-color: var(--cover);
+  background-image:
+    radial-gradient(120% 70% at 50% -10%, rgba(255, 255, 255, .06), transparent 60%),
+    radial-gradient(140% 100% at 50% 120%, rgba(0, 0, 0, .30), transparent 60%);
+  background-attachment: fixed;
 }
-.emboss .p { font-size: min(92vh, 78vw); left: 22vw; top: 8vh; }
-.emboss .m { font-size: min(70vh, 60vw); left: 48vw; top: 38vh; }
+body.cover::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.16' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size: 240px 240px, 320px 320px;
+  opacity: .5; mix-blend-mode: soft-light;
+}
 
 /* ---------- nav ---------- */
 nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 56px; }
@@ -200,7 +208,7 @@ kbd { font: inherit; font-size: .85em; border: 1px solid rgba(255, 255, 255, .35
 /* high-contrast mode */
 .contrast { --text: #fff; --soft: #eef3ff; --label: #e2ecff; --rule: rgba(255, 255, 255, .4); --grid: transparent; }
 .contrast body, .contrast body.paper, .contrast body.cover { background: #07112a !important; }
-.contrast .emboss { display: none; }
+.contrast body.cover::before { display: none; }
 .contrast a { text-decoration-color: #fff; text-decoration-thickness: 2px; }
 
 /* reduce motion */
@@ -216,8 +224,6 @@ kbd { font: inherit; font-size: .85em; border: 1px solid rgba(255, 255, 255, .35
   nav .links { flex-wrap: wrap; font-size: 13.5px; }
   nav .links a { padding: 4px 8px; }
   .a11y-panel { left: 0; width: auto; }
-  .emboss .p { font-size: 120vw; left: 8vw; top: 14vh; }
-  .emboss .m { font-size: 92vw; left: 40vw; top: 52vh; }
   .photo { width: 92px; height: 92px; margin-left: 14px; }
   h1 .sig { font-size: 46px; }
   h1 .last { font-size: 26px; }
