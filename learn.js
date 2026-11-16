@@ -40,7 +40,6 @@ window.LEARN = [
     subject: "literature",
     kind: "book",
     star: false,
-    summary: "An immigrant founder, Edrizio De La Cruz, climbs socio-economic systems to co-found Arcus, a fintech startup for immigrants that gets acquired by Mastercard.",
     summary: "Edrizio De La Cruz rises from poverty in the Dominican Republic and Harlem to co-found Arcus, a fintech startup for immigrants later acquired by Mastercard.",
 body: [
   "Quick summary of the book: Edrizio De La Cruz, an immigrant from the Dominican Republic raised in Harlem, rises out of poverty to co-found Arcus, a fintech startup built for immigrants that is eventually acquired by Mastercard. My ICE professor challenged our class to read one of his recommended books within a week. I finished it in a single sitting, though not out of any exceptional discipline. The assignment simply happened to land during Halloween week, and anyone who has been to college knows how that week tends to go. So I sat down with my iPad at 11:30 pm the night before class and read it cover to cover until 4 am.",
