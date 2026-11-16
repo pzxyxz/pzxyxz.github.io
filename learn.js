@@ -32,23 +32,35 @@
      ]
    },
    ========================================================================= */
+   {
+     slug: "The Underdog Founder: How to Go From Unseen to Unstoppable",
+     date: "2026-11-16",
+     title: "The Underdog Founder: How to Go From Unseen to Unstoppable",
+     subject: "Literature",
+     kind: "book",
+     star: false,
+     summary: "Inspirational story of an immigrant founder who ascends socio-economic systems to eventually co-found a fintech startup for immigrants- Arcus - which gets acquired by Mastercard.",
+     sources: [["Course name", "https://..."]],
+     body: [
+       "My ICE professor challenged the class to read a book in one week. Conveniently enough, I did it in a day, but not because I'm cocky or have top 0.01% reading speed. It was more so because this task was given during the week of Halloween."
+        "And everyone knows what happens in college during the week of Halloween. Regardless, I sat down with my iPad and read this book cover to cover from 10 pm the night before to 5 am the day of class. It's an inspiring book for sure, and provides"
+      "me comfort in knowing that I'm not crazy for always wanting more. However, I do have some questions about his framework of thinking:
+
+     ]
+   },
 window.LEARN = [
   {
     slug: "week-00",
     date: "2026-11-16",
     title: "week 00: the rules",
-    subject: "manifesto",
+    subject: "challenge",
     kind: "essay",
     star: true,
-    summary: "One new thing every week. Courses, books, builds, rabbit holes.",
+    summary: "Something thoughtful every week",
     body: [
-      "I'm a lifelong learner, and I want to prove it, not just say it.",
-      "So here's the challenge: every week I learn something new and write it down here. A course, a book, a build, or a topic I knew nothing about on Monday. Cryptography one week, philosophy the next, math patterns in nature after that.",
-      "## The rules",
-      "- One topic per week.",
-      "- Write what I actually understood, not what sounds smart.",
-      "- Say what I got wrong.",
-      "- Breadth is the point. I want to be a generalist."
+      "I'm always adding to my thought bank, and I thought it would be a good to make it a recursive and measurable substance to the public.",
+      "This is also somewhat inspired by my Professor for <em> Innovation, Creativity, and Entrepreneurship (ICE) </em> who reads, listens to podcasts, and engages in various other forms of productive information consumption at a constant rate. So here's
+      "the challenge: every week I learn something new or useful and write my thoughts here.",
     ]
   }
 ];
