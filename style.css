@@ -273,29 +273,41 @@ html:has(body.paper) { background: var(--paper); }
 @media (max-width: 640px) { .feedback .q { font-size: 18px; } }
 
 /* ── fonts: Instrument Serif (italic titles + signature) + Manrope ── */
-nav .me { font-family: var(--sig); font-style: italic; font-weight: 400; font-size: 30px; letter-spacing: -.01em; }
-h1 .sig { font-family: var(--sig); font-style: italic; font-weight: 400; font-size: 96px; letter-spacing: -.02em; }
+body { font-size: calc(16px * var(--scale, 1)); line-height: 1.6; }
+.wrap { max-width: 680px; }
 
-h2, .page-title, .single h1, h1 .last, .index caption {
-  font-family: var(--head); font-style: italic; font-weight: 400; letter-spacing: -.01em;
-}
-h2 { font-size: 32px; }
-.single h2 { font-size: 26px; }
-.page-title, .single h1 { font-size: 52px; line-height: 1.05; }
-h1 .last { font-size: 52px; }
-.index caption { font-size: 24px; }
+/* name + nav */
+nav { margin-bottom: 48px; }
+nav .me { font-size: 24px; }
+nav .links { font-size: 14px; }
+h1 .sig { font-size: 60px; }
+h1 .last { font-size: 32px; }
+.sub { font-size: 15px; margin-bottom: 28px; }
+.photo { width: 140px; height: 140px; }
 
-.lead, .principles li, .feedback .q, .work .t {
-  font-family: var(--body); font-style: normal; font-weight: 600; letter-spacing: -.005em;
-}
+/* titles */
+h2 { font-size: 24px; margin: 56px 0 14px; }
+.page-title, .single h1 { font-size: 34px; }
+.single h2 { font-size: 20px; margin: 36px 0 8px; }
+.index caption { font-size: 19px; }
 
+/* body-level pieces */
+.lead, .principles li { font-size: 16px; }
+.work .t, .feedback .q { font-size: 16.5px; }
+.feedback .more, .work .x { font-size: 15px; }
+.index { font-size: 15px; }
+.index td { padding: 8px 12px 8px 0; }
+
+/* small labels */
 .kicker, .rows .d, .index th, .single .meta, dl.skills dt, .feedback figcaption, .pager span {
-  font-size: 11.5px; font-weight: 700; letter-spacing: .14em;
+  font-size: 11px;
 }
 
 @media (max-width: 640px) {
-  nav .me { font-size: 26px; }
-  h1 .sig { font-size: 72px; }
-  h2 { font-size: 28px; }
-  .page-title, .single h1, h1 .last { font-size: 40px; }
+  nav .me { font-size: 22px; }
+  h1 .sig { font-size: 48px; }
+  h1 .last { font-size: 26px; }
+  h2 { font-size: 22px; }
+  .page-title, .single h1 { font-size: 28px; }
+  .photo { width: 96px; height: 96px; }
 }
