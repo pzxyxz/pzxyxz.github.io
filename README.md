@@ -3,9 +3,10 @@
 A deliberately simple site: three pages, one stylesheet, no build step.
 
 - `index.html` — about, news, selected work, publications, toolkit, contact. **Edit the text right in this file.**
-- `projects.html` — every project write-up on one page, generated from `data.js`.
 - `art.html` — artwork gallery, also from `data.js` (add one-sentence descriptions in `artAlt`).
-- `blog.html` — posts from `posts.js`. Add a post by copying one block at the top.
+- `learn.html` — the iWannaLearn list; each entry opens `entry.html?e=<slug>`. Add a week in `learn.js` (template at the top of that file).
+- `projects.html` — the project list; each project opens `project.html?p=<slug>`. Edit projects in `data.js`.
+- `assets/img/profile.jpg` — your round profile photo.
 - `accessibility.html` — what the site does for accessibility and how to report problems.
 - `data.js` — project write-ups and art images. Add a project by copying one block.
 - `style.css` — colors and fonts at the top.

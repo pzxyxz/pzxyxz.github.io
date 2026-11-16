@@ -1,4 +1,4 @@
-/* Shared behaviour for every page. Content lives in data.js and posts.js. */
+/* Shared behaviour for every page. Content lives in data.js (projects, art) and learn.js (iWannaLearn). */
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const B = window.IMG_BASE || "";
@@ -50,20 +50,20 @@
   /* ───────── "who's visiting?" — tailors the start-here list ───────── */
   const PATHS = {
     recruiter: { note: "Shipped hardware, a paper, three awards.", items: [
-      ["projects.html#abb-elsp", "A mechanism I designed that shipped at ABB", "20,000 UL-98 cycles"],
-      ["projects.html#abb-nema", "Taking a part from concept to production release", "UL-67, injection molded"],
+      ["project.html?p=abb-elsp", "A mechanism I designed that shipped at ABB", "20,000 UL-98 cycles"],
+      ["project.html?p=abb-nema", "Taking a part from concept to production release", "UL-67, injection molded"],
       ["https://www.sciencedirect.com/science/article/pii/S2405580825003838?via%3Dihub", "My first paper", "Biochemistry and Biophysics Reports"],
       ["#formerly", "Experience and awards", ""] ] },
     engineer: { note: "The analysis behind the decisions.", items: [
-      ["projects.html#knee-brace", "Sizing a hinge pin to SF 9.9 under 2030 N", "clevis joint, double shear"],
-      ["projects.html#plasma", "Why fluorine wrecked our plasma uniformity", "EDX, 30+ SDBD devices"],
-      ["projects.html#recycling-sorter", "Encoder-free gate positioning from a calibrated constant", "Arduino C++"],
-      ["projects.html#li-ion-soh", "Reading battery health from heat flow", "thesis, in progress"] ] },
+      ["project.html?p=knee-brace", "Sizing a hinge pin to SF 9.9 under 2030 N", "clevis joint, double shear"],
+      ["project.html?p=plasma", "Why fluorine wrecked our plasma uniformity", "EDX, 30+ SDBD devices"],
+      ["project.html?p=recycling-sorter", "Encoder-free gate positioning from a calibrated constant", "Arduino C++"],
+      ["project.html?p=li-ion-soh", "Reading battery health from heat flow", "thesis, in progress"] ] },
     curious: { note: "The fun ones.", items: [
-      ["projects.html#voxvest", "VoxVest, a wearable we built in 24 hours for deafblind people", ""],
-      ["projects.html#manta-ray", "ManTaRay, a robot manta ray that collects marina plastic", ""],
+      ["project.html?p=voxvest", "VoxVest, a wearable we built in 24 hours for deafblind people", ""],
+      ["project.html?p=manta-ray", "ManTaRay, a robot manta ray that collects marina plastic", ""],
       ["art.html", "Things I make for fun", ""],
-      ["blog.html", "The blog", ""] ] }
+      ["learn.html", "iWannaLearn: one new thing every week", ""] ] }
   };
   const picker = $("#paths");
   if (picker) {
@@ -78,49 +78,87 @@
     const saved = store.get("path"); if (saved && PATHS[saved]) choose(saved, false);
   }
 
-  /* ───────── latest posts on the home page ───────── */
-  const POSTS = window.POSTS || [];
-  const fmt = d => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  const latest = $("#latest-posts");
-  if (latest) latest.innerHTML = POSTS.slice(0, 3).map(p => `<li><span class="d"><time datetime="${p.date}">${fmt(p.date)}</time></span><span><a href="blog.html#${p.slug}">${esc(p.title)}</a></span></li>`).join("") || "<li><span>First post coming soon.</span></li>";
+  const P = window.PROJECTS || [];
+  const L = window.LEARN || [];
+  const param = k => new URLSearchParams(location.search).get(k);
+  const md = d => { const x = new Date(d + "T12:00:00"); return `${String(x.getMonth() + 1).padStart(2, "0")}.${String(x.getDate()).padStart(2, "0")}`; };
+  const long = d => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  const inline = t => esc(t).replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2">$1</a>');
+  const renderBody = body => { let out = "", ul = false;
+    (body || []).forEach(b => {
+      if (b.startsWith("- ")) { if (!ul) { out += "<ul>"; ul = true; } out += `<li>${inline(b.slice(2))}</li>`; return; }
+      if (ul) { out += "</ul>"; ul = false; }
+      out += b.startsWith("## ") ? `<h2>${inline(b.slice(3))}</h2>` : `<p>${inline(b)}</p>`;
+    });
+    return out + (ul ? "</ul>" : ""); };
+  const pager = (list, i, href, label) => {
+    const prev = list[i - 1], next = list[i + 1];
+    return `<nav class="pager" aria-label="More ${label}">${prev ? `<a href="${href(prev)}"><span>← previous</span>${esc(prev.title)}</a>` : ""}${next ? `<a class="next" href="${href(next)}"><span>next →</span>${esc(next.title)}</a>` : ""}</nav>`; };
+  const notFound = (el, back, label) => { el.innerHTML = `<h1>Not found</h1><p>That page doesn't exist. <a href="${back}">See all ${label}</a>.</p>`; };
 
-  /* ───────── blog page ───────── */
-  const blog = $("#blog");
-  if (blog) {
-    const inline = t => esc(t).replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2">$1</a>');
-    const render = body => { let out = "", ul = false;
-      body.forEach(b => {
-        if (b.startsWith("- ")) { if (!ul) { out += "<ul>"; ul = true; } out += `<li>${inline(b.slice(2))}</li>`; return; }
-        if (ul) { out += "</ul>"; ul = false; }
-        out += b.startsWith("## ") ? `<h3>${inline(b.slice(3))}</h3>` : `<p>${inline(b)}</p>`;
-      });
-      return out + (ul ? "</ul>" : ""); };
-    const mins = p => Math.max(1, Math.round(p.body.join(" ").split(/\s+/).length / 220));
-    blog.innerHTML = `<ul class="rows">${POSTS.map(p => `<li><span class="d"><time datetime="${p.date}">${fmt(p.date)}</time></span><span><a href="#${p.slug}">${esc(p.title)}</a> <span class="dim">· ${esc(p.summary)}</span></span></li>`).join("")}</ul>` +
-      POSTS.map(p => `<article class="post" id="${p.slug}" aria-labelledby="${p.slug}-t"><h2 id="${p.slug}-t">${esc(p.title)}</h2>
-        <p class="meta"><time datetime="${p.date}">${fmt(p.date)}</time> · ${mins(p)} min read</p>${render(p.body)}
-        <p class="back"><a href="#top">↑ back to top</a> · <a href="https://www.linkedin.com/in/preisha-mishra/">reply on LinkedIn</a></p></article>`).join("");
+  /* ───────── iWannaLearn on the home page (latest 3) ───────── */
+  const latest = $("#latest-learn");
+  if (latest) latest.innerHTML = L.slice(0, 3).map(e => `<li><span class="d"><time datetime="${e.date}">${md(e.date)}</time></span><span><a href="entry.html?e=${e.slug}">${esc(e.title)}</a> <span class="dim">· ${esc(e.subject)}</span></span></li>`).join("") || "<li><span>Week one starts soon.</span></li>";
+
+  /* ───────── iWannaLearn list ───────── */
+  const learnList = $("#learn-list");
+  if (learnList) {
+    $("#learn-count").textContent = `(${L.length})`;
+    const years = [...new Set(L.map(e => e.date.slice(0, 4)))];
+    learnList.innerHTML = years.map(y => { const rows = L.filter(e => e.date.startsWith(y));
+      return `<table class="index"><caption>${y}<span>(${rows.length})</span></caption>
+        <thead><tr><th scope="col">date</th><th scope="col">title</th><th scope="col">subject</th></tr></thead><tbody>` +
+        rows.map(e => `<tr><td class="date"><time datetime="${e.date}">${md(e.date)}</time></td>
+          <td>${e.star ? '<span class="star" aria-label="favorite">★</span>' : ""}<a href="entry.html?e=${e.slug}">${esc(e.title)}</a></td>
+          <td class="subj">${esc(e.subject)}</td></tr>`).join("") + "</tbody></table>"; }).join("");
   }
 
-  /* ───────── projects page ───────── */
-  const P = window.PROJECTS || [];
-  const proj = $("#projects");
+  /* ───────── single iWannaLearn entry ───────── */
+  const entry = $("#entry");
+  if (entry) {
+    const i = L.findIndex(e => e.slug === param("e")), e = L[i];
+    if (!e) notFound(entry, "learn.html", "entries");
+    else {
+      document.title = `${e.title} — iWannaLearn — Preisha Mishra`;
+      const src = (e.sources || []).length ? `<h2>sources</h2><ul class="sources">${e.sources.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join("")}</ul>` : "";
+      entry.innerHTML = `<p class="crumb"><a href="learn.html">← iWannaLearn</a></p>
+        <h1>${esc(e.title)}</h1>
+        <p class="meta"><time datetime="${e.date}">${long(e.date)}</time> · ${esc(e.subject)}${e.kind ? " · " + esc(e.kind) : ""}</p>
+        ${renderBody(e.body)}${src}${pager(L, i, x => `entry.html?e=${x.slug}`, "entries")}`;
+    }
+  }
+
+  /* ───────── projects list ───────── */
+  const projList = $("#project-list");
+  if (projList) {
+    $("#project-count").textContent = `(${P.length})`;
+    projList.innerHTML = [["eng", "engineering"], ["design", "product design"]].map(([g, name]) => { const rows = P.filter(p => p.group === g);
+      return `<table class="index"><caption>${name}<span>(${rows.length})</span></caption>
+        <thead><tr><th scope="col">project</th><th scope="col" class="ctx-col">context</th><th scope="col">subject</th></tr></thead><tbody>` +
+        rows.map(p => `<tr><td><a href="project.html?p=${p.slug}">${esc(p.title)}</a></td><td class="ctx ctx-col">${esc(p.subtitle)}</td><td class="subj">${esc((p.tag || "").toLowerCase())}</td></tr>`).join("") + "</tbody></table>"; }).join("");
+    // old links like projects.html#plasma go to the new page
+    if (location.hash && P.some(p => p.slug === location.hash.slice(1))) location.replace(`project.html?p=${location.hash.slice(1)}`);
+  }
+
+  /* ───────── single project ───────── */
+  const proj = $("#project");
   if (proj) {
-    const groups = [["eng", "engineering"], ["design", "product design"]];
-    const toc = groups.map(([g, name]) => `<h2>${name}</h2><ul class="toc">` +
-      P.filter(p => p.group === g).map(p => `<li><a href="#${p.slug}">${esc(p.title)}</a> <span class="dim">— ${esc(p.subtitle)}</span></li>`).join("") + "</ul>").join("");
-    const item = it => Array.isArray(it) ? `<li><strong>${esc(it[0])}.</strong> ${esc(it[1])}</li>` : `<li>${esc(it)}</li>`;
-    proj.innerHTML = toc + P.map(p => {
-      const meta = [p.tag, ...Object.values(p.meta || {})].filter(Boolean).map(esc).join(" · ");
-      const secs = (p.sections || []).map(s => `<h4>${esc(s.h)}</h4>` + (s.p ? `<p>${esc(s.p)}</p>` : "") +
+    const i = P.findIndex(p => p.slug === param("p")), p = P[i];
+    if (!p) notFound(proj, "projects.html", "projects");
+    else {
+      document.title = `${p.title} — Preisha Mishra`;
+      const item = it => Array.isArray(it) ? `<li><strong>${esc(it[0])}.</strong> ${esc(it[1])}</li>` : `<li>${esc(it)}</li>`;
+      const meta = [p.subtitle, p.tag, ...Object.values(p.meta || {})].filter(Boolean).map(esc).join(" · ");
+      const secs = (p.sections || []).map(s => `<h2>${esc(s.h)}</h2>` + (s.p ? `<p>${esc(s.p)}</p>` : "") +
         (s.items ? `<ul>${s.items.map(item).join("")}</ul>` : "") + (s.note ? `<p class="note">${esc(s.note)}</p>` : "")).join("");
-      const figs = (p.gallery || []).length ? `<div class="figs">${p.gallery.map(([f, c], i) => { const alt = c || `${p.title}, figure ${i + 1}`;
+      const figs = (p.gallery || []).length ? `<h2>figures</h2><div class="figs">${p.gallery.map(([f, c], k) => { const alt = c || `${p.title}, figure ${k + 1}`;
         return `<figure>${zoomBtn(img(f, 2048), img(f, 512), alt)}${c ? `<figcaption>${esc(c)}</figcaption>` : ""}</figure>`; }).join("")}</div>` : "";
       const link = p.link ? ` <a href="${esc(p.link[1])}">${esc(p.link[0])} ↗</a>` : "";
-      return `<article id="${p.slug}" aria-labelledby="${p.slug}-t"><h3 id="${p.slug}-t">${esc(p.title)}</h3><p class="meta">${esc(p.subtitle)}<br>${meta}</p>
+      proj.innerHTML = `<p class="crumb"><a href="projects.html">← projects</a></p>
+        <h1>${esc(p.title)}</h1><p class="meta">${meta}</p>
         <p>${esc(p.lede)}${link}</p>${p.comingSoon ? `<p class="note">write-up coming soon.</p>` : ""}${secs}${figs}
-        <p class="back"><a href="#top">↑ back to top</a></p></article>`;
-    }).join("");
+        ${pager(P, i, x => `project.html?p=${x.slug}`, "projects")}`;
+    }
   }
 
   /* ───────── art page ───────── */
@@ -128,8 +166,6 @@
   if (art) { const alts = window.SITE?.artAlt || [];
     art.innerHTML = (window.SITE?.art || []).map((f, i) => zoomBtn(img(f, 2048), img(f, 1024), alts[i] || `Artwork by Preisha, piece ${i + 1}`, "art-item")).join(""); }
 
-  // jump to #anchor after content renders
-  if (location.hash && (proj || blog)) document.getElementById(location.hash.slice(1))?.scrollIntoView();
 
   /* ───────── image viewer (accessible dialog) ───────── */
   const v = document.createElement("div");
@@ -150,5 +186,4 @@
     if (e.key === "Tab") { e.preventDefault(); v.querySelector(".viewer-close").focus(); }
   });
 
-  /* ───────── a soft light that follows the cursor across the grid ───────── */
 })();
