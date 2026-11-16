@@ -234,6 +234,7 @@ kbd { font: inherit; font-size: .85em; border: 1px solid rgba(255, 255, 255, .35
   .index .ctx-col { display: none; }
   .index .subj { white-space: normal; }
 }
+
 /* ===== the lightbulb on the "i" (paste at the end of style.css) ===== */
 .i-base { display: inline-block; width: 0; height: 0; vertical-align: baseline; }  /* marks the baseline */
 .i-dot { position: absolute; z-index: 3; border-radius: 50%; background: #fff; pointer-events: none; }
