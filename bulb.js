@@ -30,45 +30,44 @@
   wrap.innerHTML = `
   <svg viewBox="0 0 ${W} ${H}" data-face="curious">
     <defs>
-      <radialGradient id="bulb-glow" cx="50%" cy="38%" r="62%">
-        <stop offset="0" stop-color="#fffaf0"/><stop offset=".55" stop-color="#ffe9a8"/><stop offset="1" stop-color="#ffd27f"/>
+      <radialGradient id="bulb-glow" cx="50%" cy="40%" r="60%">
+        <stop offset="0" stop-color="#fff6dc"/><stop offset=".6" stop-color="#ffd877"/><stop offset="1" stop-color="#ffb938"/>
       </radialGradient>
     </defs>
     <g class="body">
-      <circle class="halo" cx="30" cy="28" r="28"/>
-      <path class="glass" d="M30 4 C45 4 54 15 54 28 C54 38 47 44 42 50 C40 53 39 56 39 59 L21 59 C21 56 20 53 18 50 C13 44 6 38 6 28 C6 15 15 4 30 4 Z"/>
-      <path class="gleam" d="M14 22 C15 15 20 10 26 9"/>
+      <ellipse class="halo" cx="30" cy="33" rx="31" ry="25"/>
+      <path class="glass" d="M30 14 C47 14 56 21 56 31 C56 40 48 45 43 50 C41 53 40 56 40 59 L20 59 C20 56 19 53 17 50 C12 45 4 40 4 31 C4 21 13 14 30 14 Z"/>
+      <path class="filament" d="M20 22 C24 16.5 34 15.5 39 19 C42 21.5 38.5 25 35.5 22"/>
       <g class="base">
-        <rect x="20" y="59" width="20" height="6" rx="3"/>
-        <rect x="21" y="65.5" width="18" height="5.5" rx="2.75"/>
-        <rect x="22.5" y="71.5" width="15" height="5" rx="2.5"/>
-        <path d="M25 77 h10 q-.5 6 -5 7 q-4.5 -1 -5 -7 z"/>
-      </g>
-      <g class="bow" transform="rotate(18 45 8)">
-        <path d="M45 8 C41 3 36 5 38 9 C36 13 41 13 45 8 Z"/>
-        <path d="M45 8 C49 3 54 5 52 9 C54 13 49 13 45 8 Z"/>
-        <circle cx="45" cy="8" r="1.8"/>
+        <rect x="19.5" y="59" width="21" height="6" rx="1.5"/>
+        <rect class="b2" x="20.5" y="65" width="19" height="5.5" rx="1.5"/>
+        <rect x="21.5" y="70.5" width="17" height="5.5" rx="1.5"/>
+        <path class="b2" d="M24 76 h12 l-2.5 7.5 h-7 z"/>
       </g>
       <g class="face">
-        <g class="specs"><circle cx="21" cy="30" r="7"/><circle cx="39" cy="30" r="7"/><path d="M28 29.5 q2 -1.5 4 0"/></g>
+        <g class="brows"><path class="bl" d="M13.5 24.6 L22 22.8"/><path class="br" d="M46.5 24.6 L38 22.8"/></g>
+        <g class="specs"><rect x="12.5" y="28" width="13" height="9" rx="1.2"/><rect x="34.5" y="28" width="13" height="9" rx="1.2"/><path d="M25.5 31.6 h9"/></g>
         <g class="eyes open">
-          <g class="lashes"><path d="M17.6 27.4 q-2 -.6 -3.2 -2.6"/><path d="M18.8 26.4 q-1 -1.2 -1.1 -3.2"/><path d="M42.4 27.4 q2 -.6 3.2 -2.6"/><path d="M41.2 26.4 q1 -1.2 1.1 -3.2"/></g>
-          <g class="pupils">
-            <ellipse cx="21" cy="30.5" rx="3" ry="3.6"/><ellipse cx="39" cy="30.5" rx="3" ry="3.6"/>
-            <circle class="shine" cx="22.1" cy="29.2" r="1.15"/><circle class="shine" cx="40.1" cy="29.2" r="1.15"/>
-            <circle class="shine" cx="20.2" cy="32" r=".55"/><circle class="shine" cx="38.2" cy="32" r=".55"/>
-          </g>
+          <path class="lid" d="M16.2 32.6 q2.8 -2.8 5.6 0 q-2.8 2.4 -5.6 0 z"/><path class="lid" d="M38.2 32.6 q2.8 -2.8 5.6 0 q-2.8 2.4 -5.6 0 z"/>
+          <g class="pupils"><circle cx="19" cy="32.6" r="1.25"/><circle cx="41" cy="32.6" r="1.25"/></g>
+          <path class="wing" d="M16.2 32.4 l-2 -1.5 M43.8 32.4 l2 -1.5"/>
         </g>
-        <g class="eyes squint"><path d="M18.5 28 l3.5 2.2 l-3.5 2.2"/><path d="M41.5 28 l-3.5 2.2 l3.5 2.2"/></g>
-        <g class="eyes happy"><path d="M17.8 31.5 q3.2 -4.4 6.4 0"/><path d="M35.8 31.5 q3.2 -4.4 6.4 0"/></g>
-        <g class="blush"><ellipse cx="14.5" cy="38" rx="2.8" ry="1.5"/><ellipse cx="45.5" cy="38" rx="2.8" ry="1.5"/></g>
-        <g class="mouth o"><ellipse cx="30" cy="40" rx="1.5" ry="1.8"/></g>
-        <g class="mouth smile"><path d="M27 39.2 q1.5 1.8 3 0 q1.5 1.8 3 0"/></g>
-        <g class="mouth grin"><path d="M26.6 38.6 q3.4 5 6.8 0 z"/></g>
-        <g class="mouth tight"><path d="M28.3 40 q1.7 .9 3.4 0"/></g>
+        <g class="eyes narrow">
+          <path class="lid" d="M16.2 33 q2.8 -1.6 5.6 0 q-2.8 1.3 -5.6 0 z"/><path class="lid" d="M38.2 33 q2.8 -1.6 5.6 0 q-2.8 1.3 -5.6 0 z"/>
+          <g class="pupils"><circle cx="19" cy="33" r=".9"/><circle cx="41" cy="33" r=".9"/></g>
+          <path class="wing" d="M16.2 32.8 l-2 -1.3 M43.8 32.8 l2 -1.3"/>
+        </g>
+        <g class="eyes wink">
+          <path class="lid" d="M16.2 32.8 q2.8 -2.3 5.6 0 q-2.8 2 -5.6 0 z"/><circle class="dotp" cx="19" cy="32.9" r="1.05"/>
+          <path d="M38.2 33.2 q2.8 1.8 5.6 0"/>
+          <path class="wing" d="M16.2 32.6 l-2 -1.4 M43.8 33.2 l2 -1.2"/>
+        </g>
+        <g class="mouth smirk"><path class="lip" d="M25.5 41 q4.6 2.6 9.6 -1.4 q-4.4 4.6 -9.6 1.4 z"/></g>
+        <g class="mouth flat"><path d="M26.5 41.6 h7"/></g>
+        <g class="mouth grin"><path class="lip" d="M25 40.2 q5 5.2 10 -1.2 q-5 2.4 -10 1.2 z"/></g>
       </g>
-      <g class="spark"><path d="M52 15 l3 -2 M54 20 l3.5 0 M50 11 l1.5 -3"/></g>
-      <g class="rays"><path d="M30 -3 v-3 M10 8 l-2 -2 M50 8 l2 -2 M2 28 h-3 M58 28 h3 M9 47 l-2 2 M51 47 l2 2"/></g>
+      <g class="spark"><path d="M53 14 l3 -3 M56 19 h4 M50 10 l1 -4"/></g>
+      <g class="rays"><path d="M30 8 v-5 M10 17 l-3 -3 M50 17 l3 -3 M1 33 h-4 M59 33 h4 M8 49 l-3 3 M52 49 l3 3"/></g>
     </g>
   </svg>`;
   const dot = document.createElement("div");
@@ -92,7 +91,7 @@
       em
     };
   }
-  function size(em) { const h = Math.max(34, em * 0.74); return { w: h * W / H, h }; }
+  function size(em) { const h = Math.max(36, em * 0.82); return { w: h * W / H, h }; }
   // place the bulb so its base contact point (30,84) sits at (x, y)
   function place(x, y, s) {
     wrap.style.width = s.w + "px"; wrap.style.height = s.h + "px";
