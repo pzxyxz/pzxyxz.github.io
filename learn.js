@@ -48,4 +48,18 @@ body: [
   "- De La Cruz writes often about his father, a New York taxi driver, yet his mother remains almost entirely absent from the narrative. I don't mean to diminish a childhood that was so evidently harsh and unforgiving. But underdog stories have a tendency to credit the climber while overlooking the people who made the climb possible. He returns again and again to how being Hispanic invited stereotypes throughout his life, whether he was rich or poor, educated or not, and at times his language implies a struggle more extreme than any other. Reading through his pain, I couldn't help but wonder whose labor his story leaves unspoken, and whether his framework would hold for someone who was carrying that labor herself."
 ]
 
-      
+},
+  {
+    slug: "week-00",
+    date: "2026-11-16",
+    title: "week 00: the rules",
+    subject: "challenge",
+    kind: "essay",
+    star: false,
+    summary: "Something thoughtful every week.",
+    body: [
+      "I'm always adding to my thought bank, and I thought it would be good to make it a recursive and measurable substance to the public.",
+      "This is also somewhat inspired by my professor for Innovation, Creativity, and Entrepreneurship (ICE), who reads, listens to podcasts, and engages in various other forms of productive information consumption at a constant rate. I find him pretty intelligent, and I used to read a lot outside of research articles and engineering textbooks before college, so here is me bringing my love for the game back. The challenge: every week I learn something new or useful and write my thoughts about it here. New entails a skill, course, book, etc."
+    ]
+  }
+];
