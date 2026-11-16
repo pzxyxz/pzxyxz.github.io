@@ -43,7 +43,7 @@ window.LEARN = [
     summary: "An immigrant founder, Edrizio De La Cruz, climbs socio-economic systems to co-found Arcus, a fintech startup for immigrants that gets acquired by Mastercard.",
     body: [
       "My ICE professor challenged the class to read a book in one week. Conveniently enough, I did it in a day, but not because I'm cocky or have top 0.01% reading speed. It was more so because this task was given during the week of Halloween.",
-      "And everyone knows what happens in college during the week of Halloween. Regardless, I sat down with my iPad and read this book cover to cover from 10 pm the night before to 5 am the day of class. It's an inspiring book for sure, and provides me comfort in knowing that I'm not crazy for always wanting more. However, I do have some questions about his framework of thinking:"
+      "And everyone knows what happens in college during the week of Halloween. Regardless, I sat down with my iPad and read this book cover to cover from 11:30 pm thee day of to 4 am the day of class. It's an inspiring book for sure, and provides me comfort in knowing that I'm not crazy for always wanting more. However, I do have some questions about his framework of thinking:"
     ]
   },
   {
